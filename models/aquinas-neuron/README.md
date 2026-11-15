@@ -15,14 +15,17 @@ plain `ollama run` answer without a thinking section. Built by `scripts/build_gg
 
 | File | Size (bytes) | SHA-256 |
 |---|---|---|
-| `aquinas-neuron-Q4_K_M.gguf` (default) | 1,099,627,008 | `030bd4086674da99974a6e73c9a7388c050d7beb658bf471268a9e8e0c391c45` |
+| `aquinas-neuron-Q4_K_M.gguf` (default) | 1,099,627,008 | `76749668eda353685ff3563202172092af4bebe45ee817e40e01133e94a7a164` |
 | `aquinas-neuron-Q8_0.gguf` (higher quality) | 1,846,237,696 | `f59ecf6f7043bead9f0e4908fa985c3bc277390bc168e538e56771e4cc3011fe` |
 | `Modelfile` | text | the tool's existing system prompt and sampling settings |
 
 These replace the checksums of the first build of November 15 (`3bbe907b…` and `1994779b…`, upstream template with
 thinking on, PEFT merge). The release build uses `scripts/merge_adapter.py --exact` (the rank-8 update summed in float64,
 rounded once to float32; it matches the PEFT merge to within one float32 rounding step) and a portable llama.cpp build,
-so the same bytes come out on any x86-64 machine; the release workflow refuses to publish unless they match.
+and the release workflow refuses to publish unless the checksums above match. The Q8_0 file came out bit-identical on
+GitHub's runner and in this session's container. Q4_K_M did not: Q4_K quantization rounds slightly differently on a
+different CPU, so the published Q4_K_M is the runner's build (`76749668…`; the session's build was `030bd408…`). It was
+tested after publication by downloading it with `scripts/install_ollama.sh` (see the release notes).
 
 ## Use
 

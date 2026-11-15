@@ -14,7 +14,7 @@ set -euo pipefail
 RELEASE="https://github.com/BibliothecaCatholica/aquinas/releases/download/v0.2.0-alpha.2"
 TAG="aquinas-neuron"
 # Pinned checksums of the release files (models/aquinas-neuron/README.md).
-SHA_Q4_K_M="030bd4086674da99974a6e73c9a7388c050d7beb658bf471268a9e8e0c391c45"
+SHA_Q4_K_M="76749668eda353685ff3563202172092af4bebe45ee817e40e01133e94a7a164"
 SHA_Q8_0="f59ecf6f7043bead9f0e4908fa985c3bc277390bc168e538e56771e4cc3011fe"
 SHA_MODELFILE="724ba2692ec762b00f6027cb7ab4d02b1ba19ab4fb017a2aa0c3e660c0004d78"
 
