@@ -37,6 +37,24 @@ class NeuronRelease(unittest.TestCase):
         self.assertIn('Stopping; nothing was installed', s)
         self.assertNotRegex(s, r'ollama (rm|delete|pull)')
 
+    def test_install_command_is_pinned_to_one_release_tag(self):
+        s = (ROOT / 'scripts/install_ollama.sh').read_text()
+        tag = re.search(r'^VERSION="(v[0-9][^"]*)"', s, re.M).group(1)
+        self.assertIn('RELEASE="https://github.com/BibliothecaCatholica/aquinas/releases/download/$VERSION"', s)
+        self.assertIn('git clone --depth 1 --branch "$VERSION"', s)
+        url = 'https://raw.githubusercontent.com/BibliothecaCatholica/aquinas/%s/scripts/install_ollama.sh' % tag
+        for f in ('scripts/install_ollama.sh', 'README.md', 'docs/RELEASE-NEURON.md'):
+            t = (ROOT / f).read_text()
+            self.assertNotIn('aquinas/main/scripts/install_ollama.sh', t, f)
+            for u in re.findall(r'https://raw\.githubusercontent\.com/\S+/install_ollama\.sh', t):
+                self.assertEqual(u, url, f)
+        self.assertIn(tag, (ROOT / 'docs/RELEASE-NEURON.md').read_text().splitlines()[0])
+        self.assertIn('release %s,' % tag, (M / 'NOTICE').read_text())
+        wf = (ROOT / '.github/workflows/publish-release.yml').read_text()
+        self.assertIn('TAG: ' + tag, wf)
+        v = re.search(r'^version = "([^"]+)"', (ROOT / 'pyproject.toml').read_text(), re.M).group(1)
+        self.assertEqual(v, tag[1:].replace('-alpha.', 'a'))
+
 
 if __name__ == '__main__':
     unittest.main()

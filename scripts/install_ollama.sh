@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # One-line install of the experimental Aquinas Neuron model for Ollama (Linux and macOS). No clone needed:
 #
-#   curl -fsSL https://raw.githubusercontent.com/BibliothecaCatholica/aquinas/main/scripts/install_ollama.sh | bash
-#   curl -fsSL https://raw.githubusercontent.com/BibliothecaCatholica/aquinas/main/scripts/install_ollama.sh | bash -s -- --with-tool
+#   curl -fsSL https://raw.githubusercontent.com/BibliothecaCatholica/aquinas/v0.2.0-alpha.3/scripts/install_ollama.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/BibliothecaCatholica/aquinas/v0.2.0-alpha.3/scripts/install_ollama.sh | bash -s -- --with-tool
 #
 # What you get: one file that is LiquidAI's LFM3-1.7B with the Bibliotheca Catholica adapter already merged into it.
 # You do not download LFM3 separately: Ollama cannot apply an adapter to a model at run time, so the two are combined
@@ -15,7 +15,8 @@
 # reviewed; not a teaching authority. Check the primary text.
 set -euo pipefail
 
-RELEASE="https://github.com/BibliothecaCatholica/aquinas/releases/download/v0.2.0-alpha.2"
+VERSION="v0.2.0-alpha.3"  # the release this script belongs to: model files and tool come from the same tag
+RELEASE="https://github.com/BibliothecaCatholica/aquinas/releases/download/$VERSION"
 TAG="aquinas-neuron"
 # Pinned checksums of the release files (models/aquinas-neuron/README.md).
 SHA_Q4_K_M="76749668eda353685ff3563202172092af4bebe45ee817e40e01133e94a7a164"
@@ -96,7 +97,7 @@ if [ "$TOOL" -eq 1 ]; then
   else
     DEST="${AQUINAS_DIR:-$HOME/aquinas}"
     command -v git >/dev/null 2>&1 || { echo "--with-tool needs git. Install git and run this again."; exit 1; }
-    if [ ! -d "$DEST/.git" ]; then git clone --depth 1 https://github.com/BibliothecaCatholica/aquinas.git "$DEST"; fi
+    if [ ! -d "$DEST/.git" ]; then git clone --depth 1 --branch "$VERSION" https://github.com/BibliothecaCatholica/aquinas.git "$DEST"; fi
   fi
   python3 -c 'import sys; sys.exit(0 if sys.version_info >= (3, 11) else 1)' 2>/dev/null \
     || { echo "The Aquinas tool needs Python 3.11 or newer. The model is installed; set up the tool later with: bash $DEST/scripts/bootstrap.sh"; exit 1; }
