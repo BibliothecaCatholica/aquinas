@@ -1,0 +1,290 @@
+{
+ "metric": "keyed article among the first k articles sent as evidence; retrieval only, not answer accuracy",
+ "dataset": "confirmation",
+ "questions": 20,
+ "top1": 0.3,
+ "top3": 0.5,
+ "top5": 0.75,
+ "items": [
+  {
+   "id": "confirmation-01",
+   "expected": [
+    "ST I q.18 a.3"
+   ],
+   "ranked": [
+    "ST I q.18 a.1",
+    "ST I q.34 a.2",
+    "ST I q.45 a.4",
+    "ST I q.49 a.2",
+    "ST I q.13 a.3"
+   ],
+   "position": null
+  },
+  {
+   "id": "confirmation-02",
+   "expected": [
+    "ST I q.23 a.8"
+   ],
+   "ranked": [
+    "ST I q.23 a.8",
+    "ST I-II q.109 a.1",
+    "ST I q.23 a.4",
+    "ST I q.23 a.5",
+    "ST I q.23 a.6"
+   ],
+   "position": 1
+  },
+  {
+   "id": "confirmation-03",
+   "expected": [
+    "ST I q.49 a.1"
+   ],
+   "ranked": [
+    "ST I q.49 a.3",
+    "ST I-II q.39 a.4",
+    "ST I-II q.43 a.1",
+    "ST I q.49 a.1",
+    "ST I-II q.45 a.2"
+   ],
+   "position": 4
+  },
+  {
+   "id": "confirmation-04",
+   "expected": [
+    "ST I q.52 a.3"
+   ],
+   "ranked": [
+    "ST I q.53 a.1",
+    "ST I q.52 a.1",
+    "ST I q.63 a.6",
+    "ST I q.7 a.3",
+    "ST I q.52 a.3"
+   ],
+   "position": 5
+  },
+  {
+   "id": "confirmation-05",
+   "expected": [
+    "ST I q.54 a.2"
+   ],
+   "ranked": [
+    "ST I q.87 a.3",
+    "ST I q.54 a.1",
+    "ST I q.79 a.2",
+    "ST I-II q.50 a.6",
+    "ST I q.85 a.5"
+   ],
+   "position": null
+  },
+  {
+   "id": "confirmation-06",
+   "expected": [
+    "ST I q.60 a.5"
+   ],
+   "ranked": [
+    "ST I q.60 a.4",
+    "ST I q.60 a.5",
+    "ST I-II q.109 a.3",
+    "ST I q.108 a.4",
+    "ST I q.60 a.3"
+   ],
+   "position": 2
+  },
+  {
+   "id": "confirmation-07",
+   "expected": [
+    "ST I q.63 a.6"
+   ],
+   "ranked": [
+    "ST I q.63 a.6",
+    "ST I q.63 a.5",
+    "ST I q.63 a.2",
+    "ST I q.114 a.3",
+    "ST I-II q.80 a.3"
+   ],
+   "position": 1
+  },
+  {
+   "id": "confirmation-08",
+   "expected": [
+    "ST I q.65 a.4"
+   ],
+   "ranked": [
+    "ST I q.56 a.2",
+    "ST I q.105 a.5",
+    "ST I q.55 a.2",
+    "ST I-II q.72 a.2",
+    "ST I q.58 a.7"
+   ],
+   "position": null
+  },
+  {
+   "id": "confirmation-09",
+   "expected": [
+    "ST I q.85 a.8"
+   ],
+   "ranked": [
+    "ST I q.85 a.8",
+    "ST I q.52 a.2",
+    "ST I q.58 a.4",
+    "ST I-II q.52 a.1",
+    "ST I q.53 a.2"
+   ],
+   "position": 1
+  },
+  {
+   "id": "confirmation-10",
+   "expected": [
+    "ST I q.108 a.5"
+   ],
+   "ranked": [
+    "ST I q.108 a.6",
+    "ST I q.112 a.4",
+    "ST I-II q.9 a.2",
+    "ST I q.108 a.5",
+    "ST I q.64 a.4"
+   ],
+   "position": 4
+  },
+  {
+   "id": "confirmation-11",
+   "expected": [
+    "ST I q.116 a.1"
+   ],
+   "ranked": [
+    "ST I q.116 a.4",
+    "ST I q.116 a.3",
+    "ST I q.116 a.2",
+    "ST I q.116 a.1",
+    "ST I q.23 a.8"
+   ],
+   "position": 4
+  },
+  {
+   "id": "confirmation-12",
+   "expected": [
+    "ST I-II q.7 a.4"
+   ],
+   "ranked": [
+    "ST I-II q.7 a.4",
+    "ST I-II q.7 a.2",
+    "ST I-II q.6 a.6",
+    "ST I-II q.7 a.1",
+    "ST I-II q.7 a.3"
+   ],
+   "position": 1
+  },
+  {
+   "id": "confirmation-13",
+   "expected": [
+    "ST I-II q.17 a.8"
+   ],
+   "ranked": [
+    "ST I-II q.17 a.7",
+    "ST I q.77 a.3",
+    "ST I q.97 a.4",
+    "ST I-II q.17 a.9",
+    "ST I-II q.17 a.2"
+   ],
+   "position": null
+  },
+  {
+   "id": "confirmation-14",
+   "expected": [
+    "ST I-II q.21 a.2"
+   ],
+   "ranked": [
+    "ST I-II q.71 a.3",
+    "ST I-II q.18 a.9",
+    "ST I-II q.20 a.1",
+    "ST I q.48 a.6",
+    "ST I q.49 a.3"
+   ],
+   "position": null
+  },
+  {
+   "id": "confirmation-15",
+   "expected": [
+    "ST I-II q.60 a.3"
+   ],
+   "ranked": [
+    "ST I-II q.68 a.5",
+    "ST I-II q.64 a.2",
+    "ST I-II q.60 a.3",
+    "ST I-II q.59 a.4",
+    "ST I-II q.60 a.2"
+   ],
+   "position": 3
+  },
+  {
+   "id": "confirmation-16",
+   "expected": [
+    "ST I-II q.74 a.9"
+   ],
+   "ranked": [
+    "ST I-II q.89 a.3",
+    "ST I-II q.74 a.10",
+    "ST I-II q.88 a.2",
+    "ST I-II q.74 a.9",
+    "ST I-II q.89 a.6"
+   ],
+   "position": 4
+  },
+  {
+   "id": "confirmation-17",
+   "expected": [
+    "ST I-II q.82 a.3"
+   ],
+   "ranked": [
+    "ST I-II q.83 a.2",
+    "ST I-II q.82 a.3",
+    "ST I-II q.83 a.1",
+    "ST I-II q.85 a.3",
+    "ST I-II q.82 a.4"
+   ],
+   "position": 2
+  },
+  {
+   "id": "confirmation-18",
+   "expected": [
+    "ST I-II q.84 a.1"
+   ],
+   "ranked": [
+    "ST I-II q.84 a.1",
+    "ST I-II q.37 a.1",
+    "ST I-II q.84 a.2",
+    "ST I-II q.85 a.2",
+    "ST I-II q.77 a.5"
+   ],
+   "position": 1
+  },
+  {
+   "id": "confirmation-19",
+   "expected": [
+    "ST I-II q.95 a.3"
+   ],
+   "ranked": [
+    "ST I-II q.96 a.1",
+    "ST I-II q.95 a.4",
+    "ST I-II q.95 a.3",
+    "ST I-II q.73 a.10",
+    "ST I-II q.27 a.3"
+   ],
+   "position": 3
+  },
+  {
+   "id": "confirmation-20",
+   "expected": [
+    "ST I-II q.109 a.4"
+   ],
+   "ranked": [
+    "ST I-II q.109 a.4",
+    "ST I-II q.112 a.1",
+    "ST I-II q.11 a.2",
+    "ST I q.43 a.3",
+    "ST I-II q.17 a.9"
+   ],
+   "position": 1
+  }
+ ]
+}
