@@ -1,0 +1,8 @@
+Aquinas Neuron = LFM3-1.7B base + Aquinas adapter, already combined in one file:
+  1. base model:  LiquidAI/LFM3-1.7B, revision 1da06bec6a819da10b54c67e5c90972b46d81871 (included in the file)
+  2. adapter:     source-pilot-v21, SHA-256 3f9f9eb50257bb734f054f810e7604c11fd1638094a6ce6d1f32807f17b7eca4 (merged into the file)
+  3. this step:   download aquinas-neuron-Q4_K_M.gguf, verify it, and add it to Ollama as aquinas-neuron
+Downloading aquinas-neuron-Q4_K_M.gguf ...
+aquinas-neuron-Q4_K_M.gguf: SHA-256 OK (76749668eda353685ff3563202172092af4bebe45ee817e40e01133e94a7a164)
+Downloading Modelfile ...
+Modelfile: SHA-256 OK (724ba2692ec762b00f6027cb7ab4d02b1ba19ab4fb017a2aa0c3e660c0004d78)
