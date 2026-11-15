@@ -14,7 +14,9 @@ def main():
         s=sub.add_parser(c);s.add_argument('question')
         if c=='ask':
             s.add_argument('--mode',choices=['baseline','prompt','rag','trained'],default='rag');s.add_argument('--model',default='lfm3-official:1.7b');s.add_argument('--host',default='http://127.0.0.1:11434');s.add_argument('--seed',type=int,default=11);s.add_argument('--plain',action='store_true');s.add_argument('--save')
+            s.add_argument('--rerank',nargs='?',const='nomic-embed-text',metavar='EMBED_MODEL',help='optional: reorder the evidence by meaning with an Ollama embedding model (default nomic-embed-text); falls back to word search')
     s=sub.add_parser('benchmark');s.add_argument('--out',required=True);s.add_argument('--modes',nargs='+',default=['baseline','prompt','rag']);s.add_argument('--models',nargs='+',default=['lfm3-official:1.7b']*3);s.add_argument('--seeds',nargs='+',type=int,default=[11,22,33]);s.add_argument('--host',default='http://127.0.0.1:11434');s.add_argument('--limit',type=int);s.add_argument('--dataset',choices=['holdout','ordinary'],default='holdout')
+    s=sub.add_parser('embed',help='compute article vectors once for --rerank');s.add_argument('--model',default='nomic-embed-text')
     s=sub.add_parser('report');s.add_argument('run');s.add_argument('--out',required=True)
     s=sub.add_parser('grade');s.add_argument('run');s.add_argument('grades');s.add_argument('--out',required=True)
     a=p.parse_args()
@@ -22,10 +24,16 @@ def main():
     elif a.cmd=='index':r={'articles':index(a.root)}
     elif a.cmd=='validate':r=validate_dataset(a.root)
     elif a.cmd=='diagnose':r=diagnose(a.root)
+    elif a.cmd=='embed':
+        import sys
+        from .rerank import build
+        r={'model':a.model,'articles':build(a.root,a.model,progress=lambda d,t:print(f'embedded {d}/{t}',file=sys.stderr,flush=True))}
     elif a.cmd=='search':r=retrieve(a.root,a.question)
     elif a.cmd=='ask':
         if a.save and Path(a.save).exists():p.error('Save path already exists; choose a new filename')
-        r=ask(a.root,a.question,a.mode,a.model,a.seed,a.host)
+        if a.rerank:
+            import os;os.environ['OLLAMA_HOST']=a.host  # the embedding model is served by the same Ollama
+        r=ask(a.root,a.question,a.mode,a.model,a.seed,a.host,rerank=a.rerank)
         if a.save:
             Path(a.save).parent.mkdir(parents=True,exist_ok=True)
             with Path(a.save).open('x',encoding='utf-8') as f:json.dump(r,f,indent=2,ensure_ascii=False)

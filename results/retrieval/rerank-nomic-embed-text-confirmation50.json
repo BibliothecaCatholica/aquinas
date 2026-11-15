@@ -1,0 +1,762 @@
+{
+ "metric": "keyed article among the first k articles sent as evidence; retrieval only, not answer accuracy",
+ "dataset": "confirmation",
+ "ranking": "word search, reranked by nomic-embed-text",
+ "questions": 50,
+ "top1": 0.54,
+ "top3": 0.68,
+ "top5": 0.72,
+ "median_seconds": 0.1153,
+ "items": [
+  {
+   "id": "confirmation-01",
+   "expected": [
+    "ST I q.18 a.3"
+   ],
+   "ranked": [
+    "ST I q.70 a.3",
+    "ST I q.18 a.3",
+    "ST I q.18 a.1",
+    "ST I q.10 a.3",
+    "ST I q.13 a.11"
+   ],
+   "position": 2,
+   "seconds": 0.1204
+  },
+  {
+   "id": "confirmation-02",
+   "expected": [
+    "ST I q.23 a.8"
+   ],
+   "ranked": [
+    "ST I q.23 a.8",
+    "ST I q.23 a.5",
+    "ST I q.23 a.4",
+    "ST I q.23 a.2",
+    "ST I q.23 a.3"
+   ],
+   "position": 1,
+   "seconds": 0.1112
+  },
+  {
+   "id": "confirmation-03",
+   "expected": [
+    "ST I q.49 a.1"
+   ],
+   "ranked": [
+    "ST I q.49 a.1",
+    "ST I q.49 a.2",
+    "ST I-II q.18 a.1",
+    "ST I-II q.39 a.1",
+    "ST I q.48 a.3"
+   ],
+   "position": 1,
+   "seconds": 0.1104
+  },
+  {
+   "id": "confirmation-04",
+   "expected": [
+    "ST I q.52 a.3"
+   ],
+   "ranked": [
+    "ST I q.52 a.3",
+    "ST I q.52 a.2",
+    "ST I q.52 a.1",
+    "ST I q.108 a.3",
+    "ST I q.108 a.1"
+   ],
+   "position": 1,
+   "seconds": 0.1237
+  },
+  {
+   "id": "confirmation-05",
+   "expected": [
+    "ST I q.54 a.2"
+   ],
+   "ranked": [
+    "ST I q.54 a.2",
+    "ST I q.54 a.1",
+    "ST I q.55 a.1",
+    "ST I q.54 a.3",
+    "ST I q.58 a.4"
+   ],
+   "position": 1,
+   "seconds": 0.1125
+  },
+  {
+   "id": "confirmation-06",
+   "expected": [
+    "ST I q.60 a.5"
+   ],
+   "ranked": [
+    "ST I q.60 a.5",
+    "ST I-II q.109 a.3",
+    "ST I q.60 a.4",
+    "ST I q.60 a.3",
+    "ST I q.60 a.2"
+   ],
+   "position": 1,
+   "seconds": 0.1137
+  },
+  {
+   "id": "confirmation-07",
+   "expected": [
+    "ST I q.63 a.6"
+   ],
+   "ranked": [
+    "ST I q.63 a.5",
+    "ST I q.63 a.6",
+    "ST I-II q.80 a.4",
+    "ST I q.114 a.3",
+    "ST I-II q.80 a.3"
+   ],
+   "position": 2,
+   "seconds": 0.1108
+  },
+  {
+   "id": "confirmation-08",
+   "expected": [
+    "ST I q.65 a.4"
+   ],
+   "ranked": [
+    "ST I q.65 a.4",
+    "ST I q.50 a.2",
+    "ST I q.110 a.1",
+    "ST I q.56 a.2",
+    "ST I q.55 a.2"
+   ],
+   "position": 1,
+   "seconds": 0.1045
+  },
+  {
+   "id": "confirmation-09",
+   "expected": [
+    "ST I q.85 a.8"
+   ],
+   "ranked": [
+    "ST I q.85 a.8",
+    "ST I q.85 a.3",
+    "ST I q.58 a.4",
+    "ST I q.85 a.5",
+    "ST I q.58 a.2"
+   ],
+   "position": 1,
+   "seconds": 0.1178
+  },
+  {
+   "id": "confirmation-10",
+   "expected": [
+    "ST I q.108 a.5"
+   ],
+   "ranked": [
+    "ST I q.112 a.4",
+    "ST I q.108 a.6",
+    "ST I q.108 a.5",
+    "ST I q.113 a.3",
+    "ST I q.108 a.3"
+   ],
+   "position": 3,
+   "seconds": 0.1355
+  },
+  {
+   "id": "confirmation-11",
+   "expected": [
+    "ST I q.116 a.1"
+   ],
+   "ranked": [
+    "ST I q.116 a.1",
+    "ST I q.116 a.4",
+    "ST I q.116 a.3",
+    "ST I q.116 a.2",
+    "ST I q.23 a.8"
+   ],
+   "position": 1,
+   "seconds": 0.1035
+  },
+  {
+   "id": "confirmation-12",
+   "expected": [
+    "ST I-II q.7 a.4"
+   ],
+   "ranked": [
+    "ST I-II q.7 a.4",
+    "ST I-II q.7 a.3",
+    "ST I-II q.7 a.2",
+    "ST I-II q.7 a.1",
+    "ST I-II q.47 a.1"
+   ],
+   "position": 1,
+   "seconds": 0.112
+  },
+  {
+   "id": "confirmation-13",
+   "expected": [
+    "ST I-II q.17 a.8"
+   ],
+   "ranked": [
+    "ST I-II q.17 a.8",
+    "ST I-II q.33 a.3",
+    "ST I-II q.17 a.6",
+    "ST I-II q.17 a.7",
+    "ST I-II q.17 a.2"
+   ],
+   "position": 1,
+   "seconds": 0.0981
+  },
+  {
+   "id": "confirmation-14",
+   "expected": [
+    "ST I-II q.21 a.2"
+   ],
+   "ranked": [
+    "ST I-II q.21 a.2",
+    "ST I-II q.21 a.4",
+    "ST I-II q.71 a.3",
+    "ST I-II q.18 a.9",
+    "ST I-II q.20 a.1"
+   ],
+   "position": 1,
+   "seconds": 0.107
+  },
+  {
+   "id": "confirmation-15",
+   "expected": [
+    "ST I-II q.60 a.3"
+   ],
+   "ranked": [
+    "ST I-II q.60 a.3",
+    "ST I-II q.60 a.2",
+    "ST I-II q.65 a.1",
+    "ST I-II q.58 a.3",
+    "ST I-II q.58 a.2"
+   ],
+   "position": 1,
+   "seconds": 0.1095
+  },
+  {
+   "id": "confirmation-16",
+   "expected": [
+    "ST I-II q.74 a.9"
+   ],
+   "ranked": [
+    "ST I-II q.74 a.9",
+    "ST I-II q.74 a.10",
+    "ST I q.79 a.9",
+    "ST I-II q.74 a.5",
+    "ST I-II q.89 a.6"
+   ],
+   "position": 1,
+   "seconds": 0.1136
+  },
+  {
+   "id": "confirmation-17",
+   "expected": [
+    "ST I-II q.82 a.3"
+   ],
+   "ranked": [
+    "ST I-II q.82 a.3",
+    "ST I-II q.77 a.5",
+    "ST I-II q.83 a.2",
+    "ST I-II q.82 a.4",
+    "ST I-II q.30 a.4"
+   ],
+   "position": 1,
+   "seconds": 0.1064
+  },
+  {
+   "id": "confirmation-18",
+   "expected": [
+    "ST I-II q.84 a.1"
+   ],
+   "ranked": [
+    "ST I-II q.84 a.1",
+    "ST I-II q.77 a.4",
+    "ST I-II q.77 a.5",
+    "ST I-II q.84 a.2",
+    "ST I-II q.72 a.9"
+   ],
+   "position": 1,
+   "seconds": 0.1102
+  },
+  {
+   "id": "confirmation-19",
+   "expected": [
+    "ST I-II q.95 a.3"
+   ],
+   "ranked": [
+    "ST I-II q.95 a.3",
+    "ST I-II q.95 a.4",
+    "ST I-II q.98 a.1",
+    "ST I-II q.92 a.1",
+    "ST I-II q.96 a.1"
+   ],
+   "position": 1,
+   "seconds": 0.1284
+  },
+  {
+   "id": "confirmation-20",
+   "expected": [
+    "ST I-II q.109 a.4"
+   ],
+   "ranked": [
+    "ST I-II q.109 a.4",
+    "ST I-II q.114 a.2",
+    "ST I-II q.109 a.3",
+    "ST I q.43 a.3",
+    "ST I-II q.112 a.1"
+   ],
+   "position": 1,
+   "seconds": 0.1214
+  },
+  {
+   "id": "confirmation-21",
+   "expected": [
+    "ST I-II q.18 a.7"
+   ],
+   "ranked": [
+    "ST I-II q.15 a.4",
+    "ST I-II q.72 a.7",
+    "ST I q.95 a.4",
+    "ST I-II q.14 a.4",
+    "ST I q.18 a.1"
+   ],
+   "position": null,
+   "seconds": 0.1438
+  },
+  {
+   "id": "confirmation-22",
+   "expected": [
+    "ST I q.43 a.4"
+   ],
+   "ranked": [
+    "ST I q.43 a.8",
+    "ST I q.43 a.1",
+    "ST I q.43 a.3",
+    "ST I q.43 a.5",
+    "ST I q.112 a.2"
+   ],
+   "position": null,
+   "seconds": 0.1169
+  },
+  {
+   "id": "confirmation-23",
+   "expected": [
+    "ST I-II q.28 a.2"
+   ],
+   "ranked": [
+    "ST I-II q.26 a.4",
+    "ST I q.60 a.3",
+    "ST I-II q.28 a.6",
+    "ST I-II q.27 a.3",
+    "ST I q.37 a.2"
+   ],
+   "position": null,
+   "seconds": 0.1096
+  },
+  {
+   "id": "confirmation-24",
+   "expected": [
+    "ST I-II q.65 a.3"
+   ],
+   "ranked": [
+    "ST I-II q.65 a.4",
+    "ST I-II q.65 a.2",
+    "ST I-II q.61 a.5",
+    "ST I-II q.61 a.4",
+    "ST I-II q.65 a.1"
+   ],
+   "position": null,
+   "seconds": 0.1202
+  },
+  {
+   "id": "confirmation-25",
+   "expected": [
+    "ST I-II q.28 a.5"
+   ],
+   "ranked": [
+    "ST I-II q.28 a.5",
+    "ST I-II q.26 a.4",
+    "ST I q.60 a.3",
+    "ST I-II q.28 a.1",
+    "ST I q.20 a.3"
+   ],
+   "position": 1,
+   "seconds": 0.1094
+  },
+  {
+   "id": "confirmation-26",
+   "expected": [
+    "ST I q.60 a.1"
+   ],
+   "ranked": [
+    "ST I q.60 a.2",
+    "ST I q.60 a.3",
+    "ST I q.60 a.1",
+    "ST I q.60 a.5",
+    "ST I q.60 a.4"
+   ],
+   "position": 3,
+   "seconds": 0.1216
+  },
+  {
+   "id": "confirmation-27",
+   "expected": [
+    "ST I-II q.96 a.1"
+   ],
+   "ranked": [
+    "ST I-II q.96 a.1",
+    "ST I-II q.90 a.3",
+    "ST I-II q.97 a.1",
+    "ST I-II q.101 a.3",
+    "ST I-II q.92 a.1"
+   ],
+   "position": 1,
+   "seconds": 0.1159
+  },
+  {
+   "id": "confirmation-28",
+   "expected": [
+    "ST I q.115 a.2"
+   ],
+   "ranked": [
+    "ST I q.85 a.1",
+    "ST I q.65 a.3",
+    "ST I q.18 a.1",
+    "ST I q.12 a.4",
+    "ST I q.115 a.2"
+   ],
+   "position": 5,
+   "seconds": 0.1199
+  },
+  {
+   "id": "confirmation-29",
+   "expected": [
+    "ST I-II q.48 a.3"
+   ],
+   "ranked": [
+    "ST I-II q.48 a.3",
+    "ST I-II q.48 a.4",
+    "ST I-II q.48 a.1",
+    "ST I-II q.47 a.4",
+    "ST I-II q.47 a.2"
+   ],
+   "position": 1,
+   "seconds": 0.1132
+  },
+  {
+   "id": "confirmation-30",
+   "expected": [
+    "ST I q.102 a.3"
+   ],
+   "ranked": [
+    "ST I q.102 a.3",
+    "ST I q.92 a.1",
+    "ST I q.94 a.3",
+    "ST I q.102 a.1",
+    "ST I-II q.5 a.7"
+   ],
+   "position": 1,
+   "seconds": 0.1424
+  },
+  {
+   "id": "confirmation-31",
+   "expected": [
+    "ST I-II q.25 a.4"
+   ],
+   "ranked": [
+    "ST I-II q.38 a.2",
+    "ST I-II q.59 a.3",
+    "ST I-II q.36 a.3",
+    "ST I-II q.38 a.1",
+    "ST I-II q.38 a.4"
+   ],
+   "position": null,
+   "seconds": 0.1024
+  },
+  {
+   "id": "confirmation-32",
+   "expected": [
+    "ST I-II q.109 a.10"
+   ],
+   "ranked": [
+    "ST I-II q.114 a.2",
+    "ST I-II q.67 a.4",
+    "ST I-II q.113 a.2",
+    "ST I-II q.68 a.6",
+    "ST I-II q.110 a.4"
+   ],
+   "position": null,
+   "seconds": 0.1113
+  },
+  {
+   "id": "confirmation-33",
+   "expected": [
+    "ST I-II q.13 a.3"
+   ],
+   "ranked": [
+    "ST I-II q.13 a.6",
+    "ST I-II q.114 a.6",
+    "ST I-II q.8 a.2",
+    "ST I-II q.11 a.3",
+    "ST I q.63 a.3"
+   ],
+   "position": null,
+   "seconds": 0.1115
+  },
+  {
+   "id": "confirmation-34",
+   "expected": [
+    "ST I-II q.22 a.1"
+   ],
+   "ranked": [
+    "ST I-II q.22 a.1",
+    "ST I-II q.41 a.1",
+    "ST I q.97 a.3",
+    "ST I-II q.31 a.8",
+    "ST I-II q.86 a.1"
+   ],
+   "position": 1,
+   "seconds": 0.1303
+  },
+  {
+   "id": "confirmation-35",
+   "expected": [
+    "ST I-II q.31 a.8"
+   ],
+   "ranked": [
+    "ST I-II q.31 a.3",
+    "ST I-II q.31 a.4",
+    "ST I-II q.31 a.1",
+    "ST I-II q.4 a.1",
+    "ST I-II q.2 a.6"
+   ],
+   "position": null,
+   "seconds": 0.1122
+  },
+  {
+   "id": "confirmation-36",
+   "expected": [
+    "ST I-II q.13 a.4"
+   ],
+   "ranked": [
+    "ST I-II q.13 a.5",
+    "ST I-II q.13 a.6",
+    "ST I q.83 a.4",
+    "ST I-II q.17 a.6",
+    "ST I q.12 a.4"
+   ],
+   "position": null,
+   "seconds": 0.1094
+  },
+  {
+   "id": "confirmation-37",
+   "expected": [
+    "ST I q.20 a.4"
+   ],
+   "ranked": [
+    "ST I q.20 a.4",
+    "ST I q.20 a.3",
+    "ST I q.12 a.6",
+    "ST I-II q.68 a.8",
+    "ST I-II q.66 a.3"
+   ],
+   "position": 1,
+   "seconds": 0.1155
+  },
+  {
+   "id": "confirmation-38",
+   "expected": [
+    "ST I q.76 a.2"
+   ],
+   "ranked": [
+    "ST I q.87 a.1",
+    "ST I q.14 a.6",
+    "ST I q.93 a.5",
+    "ST I q.29 a.1",
+    "ST I q.75 a.2"
+   ],
+   "position": null,
+   "seconds": 0.1167
+  },
+  {
+   "id": "confirmation-39",
+   "expected": [
+    "ST I q.24 a.2"
+   ],
+   "ranked": [
+    "ST I-II q.68 a.6",
+    "ST I-II q.68 a.7",
+    "ST I q.62 a.6",
+    "ST I q.38 a.2",
+    "ST I-II q.110 a.1"
+   ],
+   "position": null,
+   "seconds": 0.1228
+  },
+  {
+   "id": "confirmation-40",
+   "expected": [
+    "ST I q.111 a.4"
+   ],
+   "ranked": [
+    "ST I q.111 a.4",
+    "ST I q.106 a.1",
+    "ST I q.112 a.3",
+    "ST I q.54 a.5",
+    "ST I q.108 a.3"
+   ],
+   "position": 1,
+   "seconds": 0.113
+  },
+  {
+   "id": "confirmation-41",
+   "expected": [
+    "ST I-II q.41 a.1"
+   ],
+   "ranked": [
+    "ST I-II q.42 a.2",
+    "ST I-II q.31 a.8",
+    "ST I-II q.44 a.2",
+    "ST I-II q.48 a.4",
+    "ST I-II q.59 a.2"
+   ],
+   "position": null,
+   "seconds": 0.115
+  },
+  {
+   "id": "confirmation-42",
+   "expected": [
+    "ST I q.23 a.7"
+   ],
+   "ranked": [
+    "ST I q.23 a.7",
+    "ST I q.23 a.4",
+    "ST I-II q.114 a.6",
+    "ST I-II q.68 a.2",
+    "ST I-II q.101 a.3"
+   ],
+   "position": 1,
+   "seconds": 0.1174
+  },
+  {
+   "id": "confirmation-43",
+   "expected": [
+    "ST I-II q.57 a.4"
+   ],
+   "ranked": [
+    "ST I-II q.57 a.3",
+    "ST I-II q.57 a.4",
+    "ST I-II q.56 a.3",
+    "ST I-II q.57 a.2",
+    "ST I q.79 a.11"
+   ],
+   "position": 2,
+   "seconds": 0.1174
+  },
+  {
+   "id": "confirmation-44",
+   "expected": [
+    "ST I-II q.6 a.2"
+   ],
+   "ranked": [
+    "ST I-II q.17 a.2",
+    "ST I-II q.17 a.8",
+    "ST I-II q.6 a.2",
+    "ST I-II q.6 a.3",
+    "ST I q.78 a.4"
+   ],
+   "position": 3,
+   "seconds": 0.1435
+  },
+  {
+   "id": "confirmation-45",
+   "expected": [
+    "ST I-II q.2 a.7"
+   ],
+   "ranked": [
+    "ST I q.62 a.1",
+    "ST I-II q.69 a.3",
+    "ST I q.62 a.4",
+    "ST I q.77 a.2",
+    "ST I q.26 a.1"
+   ],
+   "position": null,
+   "seconds": 0.1147
+  },
+  {
+   "id": "confirmation-46",
+   "expected": [
+    "ST I-II q.92 a.2"
+   ],
+   "ranked": [
+    "ST I-II q.92 a.2",
+    "ST I-II q.96 a.2",
+    "ST I-II q.99 a.5",
+    "ST I-II q.100 a.9",
+    "ST I-II q.109 a.4"
+   ],
+   "position": 1,
+   "seconds": 0.1227
+  },
+  {
+   "id": "confirmation-47",
+   "expected": [
+    "ST I q.39 a.1"
+   ],
+   "ranked": [
+    "ST I q.39 a.1",
+    "ST I q.39 a.2",
+    "ST I q.93 a.5",
+    "ST I q.30 a.2",
+    "ST I q.42 a.1"
+   ],
+   "position": 1,
+   "seconds": 0.1187
+  },
+  {
+   "id": "confirmation-48",
+   "expected": [
+    "ST I q.84 a.7"
+   ],
+   "ranked": [
+    "ST I q.12 a.12",
+    "ST I q.88 a.1",
+    "ST I q.93 a.6",
+    "ST I-II q.109 a.1",
+    "ST I q.87 a.1"
+   ],
+   "position": null,
+   "seconds": 0.1234
+  },
+  {
+   "id": "confirmation-49",
+   "expected": [
+    "ST I q.31 a.3"
+   ],
+   "ranked": [
+    "ST I q.31 a.4",
+    "ST I q.31 a.3",
+    "ST I q.31 a.2",
+    "ST I q.42 a.5",
+    "ST I q.34 a.3"
+   ],
+   "position": 2,
+   "seconds": 0.131
+  },
+  {
+   "id": "confirmation-50",
+   "expected": [
+    "ST I q.31 a.2"
+   ],
+   "ranked": [
+    "ST I q.93 a.5",
+    "ST I q.39 a.1",
+    "ST I q.40 a.2",
+    "ST I q.41 a.6",
+    "ST I q.31 a.2"
+   ],
+   "position": 5,
+   "seconds": 0.1459
+  }
+ ]
+}

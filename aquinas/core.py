@@ -160,29 +160,41 @@ def article_candidates(root, query, articles):
     return candidates
 
 
-def rank_articles(root, query, n=5):
+def ordered_articles(root, query, articles, rerank=None):
+    """Distinct article ids in the order retrieve_context considers them, with the word-search rank of each, and a note.
+
+    rerank names an Ollama embedding model (aquinas.rerank): the first rerank.CANDIDATES articles are reordered by
+    meaning; the rest keep their word-search order. Without it, or when reranking cannot run, word search decides."""
+    order=[];rank={}
+    for ref,r in article_candidates(root,query,articles):
+        if ref not in rank:order.append(ref);rank[ref]=r
+    note=None
+    if rerank:
+        from . import rerank as R
+        head,note=R.rerank(root,query,order[:R.CANDIDATES],rerank)
+        order=head+order[R.CANDIDATES:]
+    return order,rank,note
+
+
+def rank_articles(root, query, n=5, rerank=None):
     """The first n distinct articles retrieve_context would consider (for scripts/evaluate_retrieval.py)."""
     articles={r['id']:r for r in read_jsonl(Path(root)/'data/corpus/articles.jsonl')}
-    out=[]
-    for ref,rank in article_candidates(root,query,articles):
-        if ref not in out:out.append(ref)
-        if len(out)>=n:break
-    return out
+    return ordered_articles(root,query,articles,rerank)[0][:n]
 
 
-def retrieve_context(root, query, max_articles=3, max_chars=18000):
+def retrieve_context(root, query, max_articles=3, max_chars=18000, rerank=None):
     """Retrieve complete authorial sections; never cut an argument at a chunk boundary.
 
     Search chunks remain the relevance units, but are expanded to their entire
     respondeo before delivery. Unpaired objections are excluded from this path.
     Whole sections that exceed the budget are reported as omitted, not truncated.
+    rerank: optional Ollama embedding model name (see ordered_articles); word search is the default and the fallback.
     """
     articles={r['id']:r for r in read_jsonl(Path(root)/'data/corpus/articles.jsonl')}
-    candidates=article_candidates(root,query,articles)
-    seen=set();passages=[];omitted=[];used=0
-    for ref,rank in candidates:
-        if ref in seen:continue
-        seen.add(ref)
+    order,ranks,note=ordered_articles(root,query,articles,rerank)
+    passages=[];omitted=[];used=0
+    for ref in order:
+        rank=ranks[ref]
         r=articles[ref]
         for n,section in enumerate(r['sections']):
             if section['kind']!='respondeo':continue
@@ -195,4 +207,5 @@ def retrieve_context(root, query, max_articles=3, max_chars=18000):
             passages.append({'id':f'{ref}::{n}:full','article_id':ref,'source_id':r['source_id'],'kind':'respondeo','text':section['text'],'rank':rank,'complete_section':True})
             used+=cost
         if len(passages)>=max_articles:break
-    return {'passages':passages,'omitted':omitted,'characters_with_labels':used,'budget_characters':max_chars,'policy':'complete_respondeo_v1','token_budget_verified':False}
+    return {'passages':passages,'omitted':omitted,'characters_with_labels':used,'budget_characters':max_chars,'policy':'complete_respondeo_v1','token_budget_verified':False,
+            'ranking':('word search' if not rerank or note else 'word search, reranked by '+rerank),**({'ranking_note':note} if note else {})}

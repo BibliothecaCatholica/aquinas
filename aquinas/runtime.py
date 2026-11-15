@@ -9,11 +9,11 @@ def post(url,payload):
     req=urllib.request.Request(url,data=json.dumps(payload).encode(),headers={'Content-Type':'application/json'})
     with urllib.request.urlopen(req,timeout=300) as r:return json.load(r)
 
-def ask(root,question,mode='rag',model='lfm3-official:1.7b',seed=11,host='http://127.0.0.1:11434',context_override=None,num_predict=768):
+def ask(root,question,mode='rag',model='lfm3-official:1.7b',seed=11,host='http://127.0.0.1:11434',context_override=None,num_predict=768,rerank=None):
     if mode not in ('baseline','prompt','rag','trained'):raise ValueError(mode)
     if context_override is not None and mode!='rag':raise ValueError('Context override requires RAG mode')
     if not 1<=num_predict<=8192:raise ValueError('Invalid generation budget')
-    context=(context_override if context_override is not None else retrieve_context(root,question)) if mode=='rag' else None
+    context=(context_override if context_override is not None else retrieve_context(root,question,rerank=rerank)) if mode=='rag' else None
     passages=context['passages'] if context else []
     messages=[]
     if mode!='baseline':messages.append({'role':'system','content':SYSTEM})
