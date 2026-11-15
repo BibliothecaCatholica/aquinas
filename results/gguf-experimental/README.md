@@ -4,4 +4,4 @@
 already used during development; not a sealed benchmark). Each line holds the question and both responses with time and
 word count: the unmerged adapter (Transformers 5.20.2, CPU, float32) and the merged Q4_K_M model in Ollama 0.40.16. Both
 received the identical request built by `aquinas.adapter.build_messages(..., rag=True)`. Not scored, not reviewed; no
-answer-quality claim. Summary: models/gguf-experimental/README.md.
+answer-quality claim. Summary: models/aquinas-neuron/README.md (an earlier build of the same weights).

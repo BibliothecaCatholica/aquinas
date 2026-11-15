@@ -1,0 +1,53 @@
+name: Publish Aquinas Neuron release
+# Builds the Aquinas Neuron GGUF files from the pinned base and the released adapter with scripts/build_gguf.sh, refuses
+# to publish unless their SHA-256 match models/aquinas-neuron/SHA256SUMS, and creates the v0.2.0-alpha.2 prerelease.
+# Approval: Micah, November 15, 2026 ("Publish as a GitHub release on the aquinas repo, tag v0.2.0-alpha.2").
+# Runs once when this file lands on main, or by hand; it never replaces an existing release.
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/publish-neuron.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: aquinas-neuron-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TAG: v0.2.0-alpha.2
+    steps:
+      - uses: actions/checkout@v4
+      - name: Refuse to replace an existing release
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then echo "Release $TAG already exists; nothing to do."; exit 1; fi
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inference environment (CPU)
+        run: |
+          python -m venv .train-venv
+          .train-venv/bin/python -m pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+          .train-venv/bin/python -m pip install -r requirements-training.txt
+          .train-venv/bin/python -m pip install -e .
+      - name: Build the GGUF files on the larger runner disk
+        run: |
+          sudo mkdir -p /mnt/gguf && sudo chown "$USER" /mnt/gguf
+          WORK=/mnt/gguf bash scripts/build_gguf.sh
+      - name: Verify the pinned checksums
+        run: |
+          cd /mnt/gguf && sha256sum -c "$GITHUB_WORKSPACE/models/aquinas-neuron/SHA256SUMS"
+      - name: Assemble and publish
+        run: |
+          A=/mnt/gguf/assets; mkdir -p "$A"
+          mv /mnt/gguf/aquinas-neuron-Q4_K_M.gguf /mnt/gguf/aquinas-neuron-Q8_0.gguf "$A/"
+          cp models/aquinas-neuron/Modelfile models/aquinas-neuron/NOTICE "$A/"
+          cp models/source-pilot-v21/LICENSE "$A/LICENSE-LFM-Open-License-v1.0.txt"
+          (cd "$A" && sha256sum aquinas-neuron-Q4_K_M.gguf aquinas-neuron-Q8_0.gguf Modelfile NOTICE LICENSE-LFM-Open-License-v1.0.txt > SHA256SUMS && cat SHA256SUMS)
+          gh release create "$TAG" --prerelease --target "$GITHUB_SHA" --title "Aquinas Neuron (experimental)" \
+            --notes-file docs/RELEASE-NEURON.md "$A"/*
