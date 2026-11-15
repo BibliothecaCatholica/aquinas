@@ -100,6 +100,21 @@ python -m aquinas.cli ask 'When does an unjust law bind in conscience?' --mode r
 
 This uses the unchanged Ollama model with retrieved evidence. It does not load the adapter below. Use `--model YOUR_LOCAL_TAG` if your installed model has another name. These commands do not install, delete, or overwrite any Ollama model.
 
+### Optional: rank evidence by meaning
+
+Word search is the default. Optionally, a small embedding model served by Ollama can reorder the top 20 search results
+by meaning, which found the keyed article more often in our retrieval measurement (`results/retrieval/`; retrieval
+only, not answer quality). It needs no Python ML packages:
+
+```bash
+ollama pull nomic-embed-text                                 # 274 MB; or all-minilm, 45 MB
+.venv/bin/python -m aquinas.cli embed --model nomic-embed-text   # once: article vectors, a few minutes on CPU
+.venv/bin/python -m aquinas.cli ask 'When does an unjust law bind in conscience?' --model aquinas-neuron --mode rag --rerank
+```
+
+`--rerank` uses `nomic-embed-text`; `--rerank all-minilm` picks another model. If Ollama, the model, or the vectors are
+missing, the tool uses word search and records why under `context_policy.ranking_note` in the saved output.
+
 ### Use the experimental trained adapter
 
 The ~31 MiB LoRA adapter is included at `models/source-pilot-v21/`. It requires the separate LiquidAI/LFM3-1.7B base; it is not a standalone GGUF or an Ollama tag. First download of the pinned base requires Internet access and several GB of storage. Questions are generated locally; they are not sent to a hosted chat API.
