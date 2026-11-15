@@ -4,6 +4,18 @@ A local Thomistic study and research tool from Bibliotheca Catholica. Aquinas co
 
 **Experimental alpha — v0.2.0a1.** The adapter trained successfully on an RTX 3070 and completed 226 development responses. Philosophical accuracy and source fidelity have not been independently approved. Answers can still contain mistakes and unsupported citations; check the primary text. This is not an official Catholic teaching authority or a demonstrated improvement over the base model.
 
+## One-command install
+
+On Linux with Python 3.11+, from the repository folder:
+
+```bash
+bash scripts/install.sh
+```
+
+It runs the bootstrap below (core tool, index, tests), creates the separate inference environment, downloads the pinned LiquidAI/LFM3-1.7B base (about 3.5 GB), verifies the adapter checksum, and answers one question with the experimental adapter and retrieved evidence. It uses your GPU if PyTorch sees one, otherwise the CPU (`AQUINAS_DEVICE=cpu` forces it; on a 4-core CPU one answer took under a minute and about 11 GB of memory, see [results/cpu-load-test](results/cpu-load-test/README.md)). It does not install, remove, or overwrite any Ollama model. The adapter is experimental and unpromoted; answer quality has not been reviewed.
+
+The sections below do the same steps one at a time.
+
 ## Download and search the texts
 
 Choose **Code → Download ZIP**, extract it, and open a terminal inside the extracted `aquinas` folder. Alternatively:
