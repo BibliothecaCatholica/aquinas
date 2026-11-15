@@ -94,8 +94,11 @@ def index(root):
     path=root/'data/corpus/index.sqlite3'
     with closing(sqlite3.connect(path)) as db, db:
         db.execute('DROP TABLE IF EXISTS passages')
-        db.execute('CREATE VIRTUAL TABLE passages USING fts5(id UNINDEXED, source_id UNINDEXED, kind UNINDEXED, text, tokenize="porter unicode61")')
+        # Each passage also carries its article's title (the "Whether ...?" preamble) in a separate, searchable column,
+        # so a question can match the article it asks about even when the respondeo words differ. Returned text is unchanged.
+        db.execute('CREATE VIRTUAL TABLE passages USING fts5(id UNINDEXED, source_id UNINDEXED, kind UNINDEXED, text, title, tokenize="porter unicode61")')
         for r in rows:
+            title=' '.join(s['text'].strip() for s in r['sections'] if s['kind']=='preamble')
             for n,s in enumerate(r['sections']):
                 if s['kind'] in ('heading','preamble'): continue
                 # Split only at paragraph boundaries; preserve text in each returned chunk.
@@ -107,12 +110,16 @@ def index(root):
                     chunk+=paragraph
                 if chunk:chunks.append(chunk)
                 for c,t in enumerate(chunks):
-                    db.execute('INSERT INTO passages VALUES(?,?,?,?)',(f"{r['id']}::{n}:{c}",r['source_id'],s['kind'],t))
+                    db.execute('INSERT INTO passages VALUES(?,?,?,?,?)',(f"{r['id']}::{n}:{c}",r['source_id'],s['kind'],t,title))
     return len(rows)
+
+TITLE_WEIGHT=2.0
 
 def retrieve(root, query, k=6, kind=None):
     tokens=re.findall(r'[A-Za-z0-9]+',query.lower())
-    stop={'the','a','an','is','are','of','to','in','and','or','does','what','whether','that','for','it','can','be','do'}
+    stop={'the','a','an','is','are','of','to','in','and','or','does','what','whether','that','for','it','can','be','do',
+          # question wording that names the author or asks for a form of answer, not the topic
+          'aquinas','his','according','give','rather','than','conclusion','objection','objections','view','thomas','for'}
     terms=list(dict.fromkeys(t for t in tokens if t not in stop and len(t)>2))[:32]
     if not terms:return []
     expr=' OR '.join('"'+t+'"' for t in terms)
@@ -122,7 +129,8 @@ def retrieve(root, query, k=6, kind=None):
         db.row_factory=sqlite3.Row
         predicate=' AND kind = ?' if kind else ''
         params=(expr,kind,k) if kind else (expr,k)
-        return [dict(r) for r in db.execute('SELECT id,source_id,kind,text,bm25(passages) AS rank FROM passages WHERE passages MATCH ?'+predicate+' ORDER BY rank LIMIT ?', params)]
+        # bm25 column weights: id, source_id, kind (unindexed), text 1.0, title TITLE_WEIGHT
+        return [dict(r) for r in db.execute('SELECT id,source_id,kind,text,bm25(passages,0,0,0,1.0,'+str(TITLE_WEIGHT)+') AS rank FROM passages WHERE passages MATCH ?'+predicate+' ORDER BY rank LIMIT ?', params)]
 
 def validate_dataset(root):
     root=Path(root)
@@ -141,6 +149,27 @@ def validate_dataset(root):
     return {'train':len(train),'holdout':len(hold),'article_disjoint':True,'exact_evidence_verified':True,'scholarly_approval':False}
 
 
+def article_candidates(root, query, articles):
+    """(article id, rank) in the order retrieve_context considers them."""
+    candidates=[]
+    # Explicit article references are evidence requests, not inferred answer keys.
+    for part,q,a in re.findall(r'ST\s+(I-II|II-II|III|I)\s+q\.\s*(\d+)\s+a\.\s*(\d+)',query):
+        ref=f'ST {part} q.{q} a.{a}'
+        if ref in articles:candidates.append((ref,None))
+    candidates.extend((h['id'].split('::')[0],h['rank']) for h in retrieve(root,query,64,kind='respondeo'))
+    return candidates
+
+
+def rank_articles(root, query, n=5):
+    """The first n distinct articles retrieve_context would consider (for scripts/evaluate_retrieval.py)."""
+    articles={r['id']:r for r in read_jsonl(Path(root)/'data/corpus/articles.jsonl')}
+    out=[]
+    for ref,rank in article_candidates(root,query,articles):
+        if ref not in out:out.append(ref)
+        if len(out)>=n:break
+    return out
+
+
 def retrieve_context(root, query, max_articles=3, max_chars=18000):
     """Retrieve complete authorial sections; never cut an argument at a chunk boundary.
 
@@ -149,12 +178,7 @@ def retrieve_context(root, query, max_articles=3, max_chars=18000):
     Whole sections that exceed the budget are reported as omitted, not truncated.
     """
     articles={r['id']:r for r in read_jsonl(Path(root)/'data/corpus/articles.jsonl')}
-    candidates=[]
-    # Explicit article references are evidence requests, not inferred answer keys.
-    for part,q,a in re.findall(r'ST\s+(I-II|II-II|III|I)\s+q\.\s*(\d+)\s+a\.\s*(\d+)',query):
-        ref=f'ST {part} q.{q} a.{a}'
-        if ref in articles:candidates.append((ref,None))
-    candidates.extend((h['id'].split('::')[0],h['rank']) for h in retrieve(root,query,64,kind='respondeo'))
+    candidates=article_candidates(root,query,articles)
     seen=set();passages=[];omitted=[];used=0
     for ref,rank in candidates:
         if ref in seen:continue

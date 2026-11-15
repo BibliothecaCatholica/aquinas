@@ -1,0 +1,710 @@
+{
+ "metric": "keyed article among the first k articles sent as evidence; retrieval only, not answer accuracy",
+ "dataset": "holdout",
+ "questions": 50,
+ "top1": 0.5,
+ "top3": 0.62,
+ "top5": 0.68,
+ "items": [
+  {
+   "id": "metaphysics-01",
+   "expected": [
+    "ST I q.3 a.1"
+   ],
+   "ranked": [
+    "ST I q.3 a.1",
+    "ST I q.105 a.2",
+    "ST I q.117 a.4",
+    "ST I q.91 a.2",
+    "ST I q.115 a.4"
+   ],
+   "position": 1
+  },
+  {
+   "id": "metaphysics-02",
+   "expected": [
+    "ST I q.3 a.2"
+   ],
+   "ranked": [
+    "ST I q.91 a.2",
+    "ST I q.110 a.2",
+    "ST I q.3 a.8",
+    "ST I q.65 a.4",
+    "ST I q.3 a.3"
+   ],
+   "position": null
+  },
+  {
+   "id": "metaphysics-03",
+   "expected": [
+    "ST I q.3 a.4"
+   ],
+   "ranked": [
+    "ST I q.3 a.4",
+    "ST I q.39 a.5",
+    "ST I q.28 a.2",
+    "ST I q.61 a.1",
+    "ST I q.13 a.5"
+   ],
+   "position": 1
+  },
+  {
+   "id": "metaphysics-04",
+   "expected": [
+    "ST I q.5 a.1"
+   ],
+   "ranked": [
+    "ST I q.5 a.1",
+    "ST I q.39 a.1",
+    "ST I q.28 a.3",
+    "ST I-II q.57 a.4",
+    "ST I q.40 a.2"
+   ],
+   "position": 1
+  },
+  {
+   "id": "metaphysics-05",
+   "expected": [
+    "ST I q.6 a.4"
+   ],
+   "ranked": [
+    "ST I-II q.1 a.7",
+    "ST I q.62 a.8",
+    "ST I q.1 a.3",
+    "ST I q.59 a.1",
+    "ST I q.65 a.2"
+   ],
+   "position": null
+  },
+  {
+   "id": "metaphysics-06",
+   "expected": [
+    "ST I q.48 a.1"
+   ],
+   "ranked": [
+    "ST I q.29 a.2",
+    "ST I q.63 a.4",
+    "ST I q.48 a.3",
+    "ST I q.65 a.1",
+    "ST I-II q.39 a.2"
+   ],
+   "position": null
+  },
+  {
+   "id": "metaphysics-07",
+   "expected": [
+    "ST I q.48 a.3"
+   ],
+   "ranked": [
+    "ST I q.95 a.2",
+    "ST I q.48 a.3",
+    "ST I q.63 a.4",
+    "ST I q.48 a.5",
+    "ST I-II q.109 a.8"
+   ],
+   "position": 2
+  },
+  {
+   "id": "metaphysics-08",
+   "expected": [
+    "ST I q.45 a.1"
+   ],
+   "ranked": [
+    "ST I q.45 a.8",
+    "ST I q.119 a.1",
+    "ST I q.90 a.2",
+    "ST I q.45 a.3",
+    "ST I q.91 a.2"
+   ],
+   "position": null
+  },
+  {
+   "id": "metaphysics-09",
+   "expected": [
+    "ST I q.76 a.1"
+   ],
+   "ranked": [
+    "ST I q.76 a.6",
+    "ST I q.76 a.8",
+    "ST I q.118 a.3",
+    "ST I q.75 a.6",
+    "ST I-II q.55 a.2"
+   ],
+   "position": null
+  },
+  {
+   "id": "metaphysics-10",
+   "expected": [
+    "ST I q.14 a.13"
+   ],
+   "ranked": [
+    "ST I-II q.14 a.3",
+    "ST I q.23 a.6",
+    "ST I q.86 a.3",
+    "ST I q.57 a.3",
+    "ST I q.22 a.4"
+   ],
+   "position": null
+  },
+  {
+   "id": "virtue_ethics-01",
+   "expected": [
+    "ST I-II q.59 a.1"
+   ],
+   "ranked": [
+    "ST I-II q.61 a.1",
+    "ST I-II q.58 a.5",
+    "ST I-II q.45 a.4",
+    "ST I-II q.58 a.2",
+    "ST I-II q.62 a.2"
+   ],
+   "position": null
+  },
+  {
+   "id": "virtue_ethics-02",
+   "expected": [
+    "ST I-II q.59 a.2"
+   ],
+   "ranked": [
+    "ST I-II q.60 a.4",
+    "ST I-II q.59 a.4",
+    "ST I-II q.61 a.3",
+    "ST I-II q.61 a.2",
+    "ST I-II q.61 a.4"
+   ],
+   "position": null
+  },
+  {
+   "id": "virtue_ethics-03",
+   "expected": [
+    "ST I-II q.57 a.1"
+   ],
+   "ranked": [
+    "ST I-II q.63 a.3",
+    "ST I-II q.58 a.2",
+    "ST I-II q.58 a.3",
+    "ST I-II q.58 a.4",
+    "ST I-II q.61 a.1"
+   ],
+   "position": null
+  },
+  {
+   "id": "virtue_ethics-04",
+   "expected": [
+    "ST I-II q.58 a.4"
+   ],
+   "ranked": [
+    "ST I-II q.58 a.4",
+    "ST I-II q.65 a.1",
+    "ST I-II q.65 a.2",
+    "ST I-II q.65 a.4",
+    "ST I-II q.58 a.5"
+   ],
+   "position": 1
+  },
+  {
+   "id": "virtue_ethics-05",
+   "expected": [
+    "ST I-II q.58 a.5"
+   ],
+   "ranked": [
+    "ST I-II q.58 a.4",
+    "ST I-II q.65 a.2",
+    "ST I-II q.65 a.1",
+    "ST I-II q.65 a.4",
+    "ST I-II q.58 a.5"
+   ],
+   "position": 5
+  },
+  {
+   "id": "virtue_ethics-06",
+   "expected": [
+    "ST I-II q.62 a.1"
+   ],
+   "ranked": [
+    "ST I-II q.65 a.4",
+    "ST I-II q.62 a.4",
+    "ST I-II q.62 a.3",
+    "ST I-II q.65 a.5",
+    "ST I-II q.67 a.5"
+   ],
+   "position": null
+  },
+  {
+   "id": "virtue_ethics-07",
+   "expected": [
+    "ST I-II q.62 a.2"
+   ],
+   "ranked": [
+    "ST I-II q.62 a.2",
+    "ST I-II q.63 a.3",
+    "ST I-II q.68 a.8",
+    "ST I-II q.67 a.2",
+    "ST I-II q.66 a.6"
+   ],
+   "position": 1
+  },
+  {
+   "id": "virtue_ethics-08",
+   "expected": [
+    "ST I-II q.64 a.1"
+   ],
+   "ranked": [
+    "ST I-II q.64 a.2",
+    "ST I-II q.64 a.1",
+    "ST I-II q.64 a.3",
+    "ST I-II q.58 a.1",
+    "ST I-II q.58 a.2"
+   ],
+   "position": 2
+  },
+  {
+   "id": "virtue_ethics-09",
+   "expected": [
+    "ST I-II q.65 a.2"
+   ],
+   "ranked": [
+    "ST I-II q.65 a.2",
+    "ST I-II q.65 a.4",
+    "ST I-II q.65 a.3",
+    "ST I-II q.63 a.3",
+    "ST I-II q.59 a.5"
+   ],
+   "position": 1
+  },
+  {
+   "id": "virtue_ethics-10",
+   "expected": [
+    "ST I-II q.58 a.3"
+   ],
+   "ranked": [
+    "ST I-II q.62 a.2",
+    "ST I-II q.58 a.3",
+    "ST I-II q.58 a.2",
+    "ST I-II q.63 a.3",
+    "ST I-II q.68 a.8"
+   ],
+   "position": 2
+  },
+  {
+   "id": "natural_law-01",
+   "expected": [
+    "ST I-II q.90 a.2"
+   ],
+   "ranked": [
+    "ST I-II q.105 a.1",
+    "ST I-II q.92 a.1",
+    "ST I-II q.20 a.2",
+    "ST I-II q.96 a.1",
+    "ST I-II q.91 a.1"
+   ],
+   "position": null
+  },
+  {
+   "id": "natural_law-02",
+   "expected": [
+    "ST I-II q.90 a.3"
+   ],
+   "ranked": [
+    "ST I-II q.96 a.1",
+    "ST I-II q.96 a.4",
+    "ST I-II q.105 a.2",
+    "ST I-II q.90 a.3",
+    "ST I q.30 a.4"
+   ],
+   "position": 4
+  },
+  {
+   "id": "natural_law-03",
+   "expected": [
+    "ST I-II q.90 a.4"
+   ],
+   "ranked": [
+    "ST I-II q.99 a.5",
+    "ST I-II q.107 a.2",
+    "ST I-II q.109 a.4",
+    "ST I-II q.95 a.3",
+    "ST I-II q.91 a.2"
+   ],
+   "position": null
+  },
+  {
+   "id": "natural_law-04",
+   "expected": [
+    "ST I-II q.91 a.2"
+   ],
+   "ranked": [
+    "ST I-II q.93 a.4",
+    "ST I-II q.93 a.6",
+    "ST I-II q.93 a.5",
+    "ST I-II q.91 a.2",
+    "ST I-II q.93 a.2"
+   ],
+   "position": 4
+  },
+  {
+   "id": "natural_law-05",
+   "expected": [
+    "ST I-II q.94 a.2"
+   ],
+   "ranked": [
+    "ST I-II q.94 a.2",
+    "ST I-II q.94 a.6",
+    "ST I-II q.100 a.1",
+    "ST I-II q.94 a.5",
+    "ST I-II q.90 a.2"
+   ],
+   "position": 1
+  },
+  {
+   "id": "natural_law-06",
+   "expected": [
+    "ST I-II q.94 a.4"
+   ],
+   "ranked": [
+    "ST I-II q.94 a.4",
+    "ST I-II q.94 a.6",
+    "ST I-II q.95 a.2",
+    "ST I-II q.100 a.1",
+    "ST I-II q.94 a.5"
+   ],
+   "position": 1
+  },
+  {
+   "id": "natural_law-07",
+   "expected": [
+    "ST I-II q.96 a.2"
+   ],
+   "ranked": [
+    "ST I-II q.96 a.2",
+    "ST I-II q.107 a.2",
+    "ST I-II q.21 a.1",
+    "ST I-II q.95 a.4",
+    "ST I-II q.71 a.2"
+   ],
+   "position": 1
+  },
+  {
+   "id": "natural_law-08",
+   "expected": [
+    "ST I-II q.96 a.4"
+   ],
+   "ranked": [
+    "ST I-II q.107 a.4",
+    "ST I-II q.6 a.7",
+    "ST I-II q.76 a.4",
+    "ST I q.13 a.9",
+    "ST I-II q.100 a.4"
+   ],
+   "position": null
+  },
+  {
+   "id": "natural_law-09",
+   "expected": [
+    "ST I-II q.96 a.4"
+   ],
+   "ranked": [
+    "ST I-II q.19 a.5",
+    "ST I q.79 a.13",
+    "ST I-II q.96 a.4",
+    "ST I-II q.19 a.6",
+    "ST I q.54 a.4"
+   ],
+   "position": 3
+  },
+  {
+   "id": "natural_law-10",
+   "expected": [
+    "ST I-II q.96 a.4"
+   ],
+   "ranked": [
+    "ST I-II q.100 a.1",
+    "ST I-II q.61 a.5",
+    "ST I-II q.18 a.11",
+    "ST I-II q.100 a.2",
+    "ST I-II q.99 a.2"
+   ],
+   "position": null
+  },
+  {
+   "id": "faith_reason_theology-01",
+   "expected": [
+    "ST I q.1 a.1"
+   ],
+   "ranked": [
+    "ST I q.46 a.2",
+    "ST I q.1 a.1",
+    "ST I-II q.40 a.5",
+    "ST I q.1 a.4",
+    "ST I-II q.47 a.2"
+   ],
+   "position": 2
+  },
+  {
+   "id": "faith_reason_theology-02",
+   "expected": [
+    "ST I q.1 a.2"
+   ],
+   "ranked": [
+    "ST I q.1 a.2",
+    "ST I q.1 a.4",
+    "ST I q.1 a.3",
+    "ST I q.1 a.8",
+    "ST I q.1 a.5"
+   ],
+   "position": 1
+  },
+  {
+   "id": "faith_reason_theology-03",
+   "expected": [
+    "ST I q.1 a.4"
+   ],
+   "ranked": [
+    "ST I q.1 a.4",
+    "ST I q.1 a.3",
+    "ST I q.1 a.5",
+    "ST I q.1 a.2",
+    "ST I q.1 a.6"
+   ],
+   "position": 1
+  },
+  {
+   "id": "faith_reason_theology-04",
+   "expected": [
+    "ST I q.1 a.8"
+   ],
+   "ranked": [
+    "ST I-II q.92 a.2",
+    "ST I-II q.19 a.4",
+    "ST I-II q.97 a.3",
+    "ST I-II q.63 a.2",
+    "ST I-II q.70 a.4"
+   ],
+   "position": null
+  },
+  {
+   "id": "faith_reason_theology-05",
+   "expected": [
+    "ST I q.1 a.9"
+   ],
+   "ranked": [
+    "ST I q.1 a.9",
+    "ST I-II q.104 a.2",
+    "ST I-II q.45 a.3",
+    "ST I q.1 a.10",
+    "ST I q.21 a.3"
+   ],
+   "position": 1
+  },
+  {
+   "id": "faith_reason_theology-06",
+   "expected": [
+    "ST I q.1 a.10"
+   ],
+   "ranked": [
+    "ST I q.1 a.9",
+    "ST I q.67 a.1",
+    "ST I q.1 a.10",
+    "ST I q.102 a.1",
+    "ST I-II q.111 a.4"
+   ],
+   "position": 3
+  },
+  {
+   "id": "faith_reason_theology-07",
+   "expected": [
+    "ST I q.2 a.1"
+   ],
+   "ranked": [
+    "ST I q.2 a.1",
+    "ST I q.2 a.2",
+    "ST I-II q.94 a.2",
+    "ST I-II q.77 a.4",
+    "ST I-II q.97 a.2"
+   ],
+   "position": 1
+  },
+  {
+   "id": "faith_reason_theology-08",
+   "expected": [
+    "ST I q.2 a.2"
+   ],
+   "ranked": [
+    "ST I q.2 a.2",
+    "ST I q.2 a.1",
+    "ST I q.46 a.2",
+    "ST I q.46 a.1",
+    "ST I-II q.21 a.1"
+   ],
+   "position": 1
+  },
+  {
+   "id": "faith_reason_theology-09",
+   "expected": [
+    "ST I q.32 a.1"
+   ],
+   "ranked": [
+    "ST I q.32 a.1",
+    "ST I q.93 a.5",
+    "ST I q.93 a.7",
+    "ST I q.31 a.1",
+    "ST I q.42 a.1"
+   ],
+   "position": 1
+  },
+  {
+   "id": "faith_reason_theology-10",
+   "expected": [
+    "ST I q.25 a.3"
+   ],
+   "ranked": [
+    "ST I q.25 a.3",
+    "ST I q.25 a.4",
+    "ST I-II q.64 a.4",
+    "ST I q.26 a.4",
+    "ST I-II q.40 a.2"
+   ],
+   "position": 1
+  },
+  {
+   "id": "source_accuracy_humility-01",
+   "expected": [
+    "ST I q.2 a.3"
+   ],
+   "ranked": [
+    "ST I q.2 a.3",
+    "ST I q.1 a.8",
+    "ST I q.5 a.1",
+    "ST I q.66 a.2",
+    "ST I q.6 a.2"
+   ],
+   "position": 1
+  },
+  {
+   "id": "source_accuracy_humility-02",
+   "expected": [
+    "ST I q.84 a.6"
+   ],
+   "ranked": [
+    "ST I q.84 a.6",
+    "ST I q.63 a.8",
+    "ST I-II q.30 a.2",
+    "ST I q.78 a.4",
+    "ST I q.39 a.8"
+   ],
+   "position": 1
+  },
+  {
+   "id": "source_accuracy_humility-03",
+   "expected": [
+    "ST I q.12 a.1"
+   ],
+   "ranked": [
+    "ST I q.12 a.1",
+    "ST I q.82 a.2",
+    "ST I q.94 a.1",
+    "ST I-II q.4 a.4",
+    "ST I q.12 a.5"
+   ],
+   "position": 1
+  },
+  {
+   "id": "source_accuracy_humility-04",
+   "expected": [
+    "ST I q.13 a.5"
+   ],
+   "ranked": [
+    "ST I q.13 a.5",
+    "ST I-II q.94 a.4",
+    "ST I q.44 a.3",
+    "ST I-II q.1 a.7",
+    "ST I q.49 a.3"
+   ],
+   "position": 1
+  },
+  {
+   "id": "source_accuracy_humility-05",
+   "expected": [
+    "ST I q.46 a.2"
+   ],
+   "ranked": [
+    "ST I q.46 a.2",
+    "ST I q.1 a.8",
+    "ST I q.103 a.2",
+    "ST I q.47 a.3",
+    "ST I q.32 a.1"
+   ],
+   "position": 1
+  },
+  {
+   "id": "source_accuracy_humility-06",
+   "expected": [
+    "ST I q.47 a.3"
+   ],
+   "ranked": [
+    "ST I q.47 a.3",
+    "ST I q.113 a.7",
+    "ST I q.23 a.3",
+    "ST I q.66 a.3",
+    "ST I q.46 a.1"
+   ],
+   "position": 1
+  },
+  {
+   "id": "source_accuracy_humility-07",
+   "expected": [
+    "ST I q.16 a.1"
+   ],
+   "ranked": [
+    "ST I q.16 a.1",
+    "ST I q.102 a.1",
+    "ST I-II q.109 a.1",
+    "ST I q.1 a.1",
+    "ST I q.16 a.8"
+   ],
+   "position": 1
+  },
+  {
+   "id": "source_accuracy_humility-08",
+   "expected": [
+    "ST I q.79 a.13"
+   ],
+   "ranked": [
+    "ST I q.79 a.13",
+    "ST I-II q.19 a.5",
+    "ST I q.23 a.6",
+    "ST I q.89 a.7",
+    "ST I-II q.19 a.6"
+   ],
+   "position": 1
+  },
+  {
+   "id": "source_accuracy_humility-09",
+   "expected": [
+    "ST I q.83 a.1"
+   ],
+   "ranked": [
+    "ST I q.83 a.3",
+    "ST I-II q.13 a.2",
+    "ST I-II q.13 a.3",
+    "ST I q.64 a.2",
+    "ST I-II q.14 a.1"
+   ],
+   "position": null
+  },
+  {
+   "id": "source_accuracy_humility-10",
+   "expected": [
+    "ST I q.75 a.2"
+   ],
+   "ranked": [
+    "ST I q.75 a.2",
+    "ST I q.75 a.6",
+    "ST I q.29 a.2",
+    "ST I q.118 a.2",
+    "ST I q.41 a.6"
+   ],
+   "position": 1
+  }
+ ]
+}
