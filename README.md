@@ -1,10 +1,57 @@
 # Aquinas
 
-A local Thomistic study and research tool from Bibliotheca Catholica. Aquinas combines searchable primary texts with local language-model inference and an experimental LFM3 adapter.
+A local Thomistic study and research tool from Bibliotheca Catholica: searchable primary texts of the Summa, and the
+**Aquinas Neuron**, an experimental LFM3-1.7B model with a Bibliotheca Catholica adapter merged in, for local use with
+Ollama.
 
-**Experimental alpha — v0.2.0a1.** The adapter trained successfully on an RTX 3070 and completed 226 development responses. Philosophical accuracy and source fidelity have not been independently approved. Answers can still contain mistakes and unsupported citations; check the primary text. This is not an official Catholic teaching authority or a demonstrated improvement over the base model.
+> **Experimental alpha (v0.2.0-alpha.2).** Answer quality has not been reviewed. Aquinas is not a teaching authority
+> and not a demonstrated improvement over the base model; answers can contain mistakes and unsupported citations, so
+> check the primary text. **The model alone has no access to the Summa.** It answers from its weights unless you use
+> it through the Aquinas tool below, which retrieves the relevant articles and sends them with your question.
 
-## One-command install
+## 1. Install the Aquinas Neuron model (one command)
+
+You need [Ollama](https://ollama.com/download) installed and running. Then, on Linux or macOS, from this repository:
+
+```bash
+bash scripts/install_ollama.sh
+```
+
+It downloads the Q4_K_M file (about 1.1 GB; add `--q8` for the 1.85 GB Q8_0 file) and the Modelfile from the
+[v0.2.0-alpha.2 release](https://github.com/BibliothecaCatholica/aquinas/releases/tag/v0.2.0-alpha.2), stops unless
+their SHA-256 match the pinned values, and runs `ollama create aquinas-neuron`. That adds one new model and changes
+nothing else; it refuses to replace an existing `aquinas-neuron` unless you add `--force`. Then:
+
+```bash
+ollama run aquinas-neuron
+```
+
+**Windows and macOS by hand:** download `aquinas-neuron-Q4_K_M.gguf` and `Modelfile` from the release into one folder;
+check the file's SHA-256 against `SHA256SUMS` in the release (Windows PowerShell: `Get-FileHash aquinas-neuron-Q4_K_M.gguf`;
+macOS: `shasum -a 256 aquinas-neuron-Q4_K_M.gguf`); then, in that folder, run `ollama create aquinas-neuron -f Modelfile`.
+The Modelfile's `FROM ./aquinas-neuron-Q4_K_M.gguf` line expects the file next to it.
+
+## 2. Ask questions grounded in the Summa (recommended)
+
+The tool searches the bundled Summa Theologiae I and I-II (1,203 articles, Fathers of the English Dominican Province
+translation, transcribed by Project Gutenberg) and sends the complete *respondeo* of the relevant articles with your
+question. Python 3.11+ and SQLite FTS5 are required; Linux is the tested platform.
+
+```bash
+bash scripts/bootstrap.sh
+source .venv/bin/activate
+python -m aquinas.cli ask 'When does an unjust law bind in conscience?' --model aquinas-neuron --mode rag
+```
+
+Retrieved evidence still needs judgment: check the cited articles. `python -m aquinas.cli search 'TERMS'` searches the
+texts without any model.
+
+## 3. Developer path
+
+The rest of this README covers the Python adapter (the unmerged LoRA, for research and comparison), the one-command
+developer install, and how the model files are built (`scripts/build_gguf.sh`; [model card](models/aquinas-neuron/README.md)).
+
+### One-command developer install
 
 On Linux with Python 3.11+, from the repository folder:
 
@@ -16,7 +63,7 @@ It runs the bootstrap below (core tool, index, tests), creates the separate infe
 
 The sections below do the same steps one at a time.
 
-## Download and search the texts
+### Download and search the texts
 
 Choose **Code → Download ZIP**, extract it, and open a terminal inside the extracted `aquinas` folder. Alternatively:
 
@@ -35,7 +82,7 @@ python -m aquinas.cli search 'human law conscience scandal disturbance'
 
 The corpus covers **Summa Theologiae I and I-II: 1,203 articles**, in the Fathers of the English Dominican Province translation transcribed by Project Gutenberg. Original text bytes and notices are preserved. The other parts of the Summa and other authors are not included.
 
-## Use an existing Ollama model
+### Use an existing Ollama model
 
 With Ollama running and `lfm3-official:1.7b` already installed:
 
@@ -45,7 +92,7 @@ python -m aquinas.cli ask 'When does an unjust law bind in conscience?' --mode r
 
 This uses the unchanged Ollama model with retrieved evidence. It does not load the adapter below. Use `--model YOUR_LOCAL_TAG` if your installed model has another name. These commands do not install, delete, or overwrite any Ollama model.
 
-## Use the experimental trained adapter
+### Use the experimental trained adapter
 
 The ~31 MiB LoRA adapter is included at `models/source-pilot-v21/`. It requires the separate LiquidAI/LFM3-1.7B base; it is not a standalone GGUF or an Ollama tag. First download of the pinned base requires Internet access and several GB of storage. Questions are generated locally; they are not sent to a hosted chat API.
 
@@ -74,7 +121,7 @@ For subsequent disconnected use, add `--offline` after the pinned base and its c
 
 The base uses upstream custom Python; the loader pins revision `1da06bec6a819da10b54c67e5c90972b46d81871` and enables that code explicitly. It verifies the adapter checksum and tokenizer mapping/template, uses SDPA attention and the model's native Torch convolution, and disables automatic compilation. No GPU Triton compiler or system Python development headers are required by this inference path. Evidence is supplied as complete respondeo sections; oversized context is refused rather than silently truncated. Retrieval relevance still needs judgment.
 
-## What actually ran
+### What actually ran
 
 | Item | Observed result |
 |---|---|
@@ -87,7 +134,7 @@ The base uses upstream custom Python; the loader pins revision `1da06bec6a819da1
 
 Development results are under `results/source-pilot-v21/`. Completion is not correctness. These questions have already been used during development and are not a sealed final benchmark. See [the model card](models/source-pilot-v21/README.md), [status](docs/STATUS.md), [training instructions](docs/TRAINING.md), and [source provenance](docs/SOURCES.md).
 
-## Reproduce and contribute
+### Reproduce and contribute
 
 ```bash
 python -m aquinas.cli ingest

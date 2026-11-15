@@ -1,0 +1,19 @@
+Aquinas Neuron (experimental), release v0.2.0-alpha.2, from Bibliotheca Catholica.
+
+Base model: LiquidAI/LFM3-1.7B, revision 1da06bec6a819da10b54c67e5c90972b46d81871
+(https://huggingface.co/LiquidAI/LFM3-1.7B), licensed under the LFM Open License v1.0. A copy of that licence is
+distributed with these files as LICENSE-LFM-Open-License-v1.0.txt. The base repository has no NOTICE file.
+
+These files are a Derivative Work, and the weights were changed. Bibliotheca Catholica:
+  1. merged its source-pilot-v21 LoRA adapter (adapter SHA-256
+     3f9f9eb50257bb734f054f810e7604c11fd1638094a6ce6d1f32807f17b7eca4) into the base weights;
+  2. converted the merged model to GGUF with llama.cpp (commit e574a17b062be51b98e239ccd3d3743e3d902333);
+  3. quantized it to Q4_K_M and Q8_0;
+  4. changed one line of the embedded upstream chat template so that thinking is off
+     (enable_thinking is set to false); the tokenizer and the rest of the template are upstream.
+
+All copyright, trademark, and attribution notices of the base model are retained. This is not a LiquidAI release and
+is not endorsed by LiquidAI. The commercial-use conditions of section 5 of the licence apply to every user.
+
+Status: experimental and unpromoted. Answer quality has not been reviewed. This is not a teaching authority and not a
+demonstrated improvement over the base model. Check the primary text.
