@@ -12,7 +12,7 @@ the embedded chat template, so `ollama run aquinas-neuron` answers directly.
 
 | File | Size (bytes) | SHA-256 |
 |---|---|---|
-| `aquinas-neuron-Q4_K_M.gguf` (default) | 1,099,627,008 | `030bd4086674da99974a6e73c9a7388c050d7beb658bf471268a9e8e0c391c45` |
+| `aquinas-neuron-Q4_K_M.gguf` (default) | 1,099,627,008 | `76749668eda353685ff3563202172092af4bebe45ee817e40e01133e94a7a164` |
 | `aquinas-neuron-Q8_0.gguf` (higher quality) | 1,846,237,696 | `f59ecf6f7043bead9f0e4908fa985c3bc277390bc168e538e56771e4cc3011fe` |
 | `Modelfile` | text | the tool's system prompt and sampling settings |
 | `SHA256SUMS` | text | checksums of the attachments |
@@ -39,4 +39,5 @@ Manual steps for Windows and macOS are in the README.
 - Not run: GPU inference, a sealed or fresh evaluation, independent scholarly review.
 
 The files were built from the repository's `scripts/build_gguf.sh` by the release workflow, which refuses to publish
-unless the checksums match the ones above. Licence: LFM Open License v1.0; see `NOTICE`.
+unless the checksums match the ones above. The Q8_0 file is bit-identical to the one tested in development; Q4_K_M
+quantization differs slightly between CPU types, so the Q4_K_M file was tested again after publication. Licence: LFM Open License v1.0; see `NOTICE`.
