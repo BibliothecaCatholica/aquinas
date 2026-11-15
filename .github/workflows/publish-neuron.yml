@@ -1,7 +1,6 @@
 name: Publish Aquinas Neuron release
 # Builds the Aquinas Neuron GGUF files from the pinned base and the released adapter with scripts/build_gguf.sh, refuses
 # to publish unless their SHA-256 match models/aquinas-neuron/SHA256SUMS, and creates the v0.2.0-alpha.2 prerelease.
-# Approval: Micah, November 15, 2026 ("Publish as a GitHub release on the aquinas repo, tag v0.2.0-alpha.2").
 # Runs once when this file lands on main, or by hand; it never replaces an existing release.
 on:
   push:
