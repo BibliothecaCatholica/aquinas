@@ -9,42 +9,50 @@ Ollama.
 > check the primary text. **The model alone has no access to the Summa.** It answers from its weights unless you use
 > it through the Aquinas tool below, which retrieves the relevant articles and sends them with your question.
 
-## 1. Install the Aquinas Neuron model (one command)
+## 1. Install (one line)
 
-You need [Ollama](https://ollama.com/download) installed and running. Then, on Linux or macOS, from this repository:
+You need [Ollama](https://ollama.com/download) installed and running. Then, on Linux or macOS, paste this into a
+terminal. It installs the model and the Summa tool together:
 
 ```bash
-bash scripts/install_ollama.sh
+curl -fsSL https://raw.githubusercontent.com/BibliothecaCatholica/aquinas/main/scripts/install_ollama.sh | bash -s -- --with-tool
 ```
 
-It downloads the Q4_K_M file (about 1.1 GB; add `--q8` for the 1.85 GB Q8_0 file) and the Modelfile from the
-[v0.2.0-alpha.2 release](https://github.com/BibliothecaCatholica/aquinas/releases/tag/v0.2.0-alpha.2), stops unless
-their SHA-256 match the pinned values, and runs `ollama create aquinas-neuron`. That adds one new model and changes
-nothing else; it refuses to replace an existing `aquinas-neuron` unless you add `--force`. Then:
+**What this downloads.** One file, the Aquinas Neuron: LiquidAI's **LFM3-1.7B** (revision `1da06bec…`) with the
+Bibliotheca Catholica **adapter already merged into it**. You do not download LFM3 separately. Ollama cannot apply an
+adapter to a model at run time, so the two are combined before release (`scripts/build_gguf.sh`) and published as one
+file, which the installer checks against a pinned SHA-256 before using it. In order, the installer:
+
+1. downloads the combined file (Q4_K_M, about 1.1 GB; add `--q8` for the 1.85 GB Q8_0) and its Modelfile from the
+   [v0.2.0-alpha.2 release](https://github.com/BibliothecaCatholica/aquinas/releases/tag/v0.2.0-alpha.2), and stops if
+   either checksum differs;
+2. adds it to Ollama as `aquinas-neuron` (one new model; nothing else changes; an existing `aquinas-neuron` is replaced
+   only with `--force`);
+3. with `--with-tool`, downloads this repository to `~/aquinas` and sets up the tool (needs git and Python 3.11+).
+
+It ends by printing the two commands to use. Leave out `--with-tool` to install the model only.
+
+**Windows and macOS by hand:** download `aquinas-neuron-Q4_K_M.gguf` and `Modelfile` from the release into one folder;
+check the file's SHA-256 against `SHA256SUMS` in the release (Windows PowerShell: `Get-FileHash aquinas-neuron-Q4_K_M.gguf`;
+macOS: `shasum -a 256 aquinas-neuron-Q4_K_M.gguf`); then, in that folder, run `ollama create aquinas-neuron -f Modelfile`.
+
+## 2. Ask
 
 ```bash
 ollama run aquinas-neuron
 ```
 
-**Windows and macOS by hand:** download `aquinas-neuron-Q4_K_M.gguf` and `Modelfile` from the release into one folder;
-check the file's SHA-256 against `SHA256SUMS` in the release (Windows PowerShell: `Get-FileHash aquinas-neuron-Q4_K_M.gguf`;
-macOS: `shasum -a 256 aquinas-neuron-Q4_K_M.gguf`); then, in that folder, run `ollama create aquinas-neuron -f Modelfile`.
-The Modelfile's `FROM ./aquinas-neuron-Q4_K_M.gguf` line expects the file next to it.
-
-## 2. Ask questions grounded in the Summa (recommended)
-
-The tool searches the bundled Summa Theologiae I and I-II (1,203 articles, Fathers of the English Dominican Province
-translation, transcribed by Project Gutenberg) and sends the complete *respondeo* of the relevant articles with your
-question. Python 3.11+ and SQLite FTS5 are required; Linux is the tested platform.
+That is the model alone: it answers from its weights and **has no access to the Summa**. For answers grounded in the
+text (recommended), ask through the tool, which searches the bundled Summa Theologiae I and I-II (1,203 articles,
+Fathers of the English Dominican Province translation, transcribed by Project Gutenberg) and sends the complete
+*respondeo* of the relevant articles with your question:
 
 ```bash
-bash scripts/bootstrap.sh
-source .venv/bin/activate
-python -m aquinas.cli ask 'When does an unjust law bind in conscience?' --model aquinas-neuron --mode rag
+cd ~/aquinas && .venv/bin/python -m aquinas.cli ask 'When does an unjust law bind in conscience?' --model aquinas-neuron --mode rag
 ```
 
-Retrieved evidence still needs judgment: check the cited articles. `python -m aquinas.cli search 'TERMS'` searches the
-texts without any model.
+Retrieved evidence still needs judgment: check the cited articles. `.venv/bin/python -m aquinas.cli search 'TERMS'`
+searches the texts without any model. Without `--with-tool`, set the tool up from a clone with `bash scripts/bootstrap.sh`.
 
 ## 3. Developer path
 
