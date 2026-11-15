@@ -1,0 +1,14 @@
+.venv/
+.train-venv/
+__pycache__/
+*.pyc
+*.egg-info/
+checkpoints/
+merged/
+*.gguf
+data/corpus/
+results/local-*
+results/pilot-*
+results/source-pilot-v21-*
+dist/
+build/

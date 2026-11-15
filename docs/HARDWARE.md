@@ -1,0 +1,11 @@
+# Hardware findings
+
+The accessible machine is a hosted Linux x86_64 workspace, **not the users Bazzite PC**. At initial audit it reported approximately 10.45 GB system RAM and 62 GB free storage. CPU topology was not exposed to lscpu. No nvidia-smi, rocminfo, Ollama, or preinstalled training libraries were available. See results/environment.json for raw findings. No inference-throughput or training-VRAM measurement for Bazzite can be inferred from this workspace.
+
+For implementation validation, a separate CPU-only environment was installed with torch 2.14.1+cpu, transformers 5.20.2, peft 0.21.2 and accelerate 1.15.0. A synthetic three-layer LFM3 adapter step succeeded with finite nonzero gradients and a saved adapter. This verifies the small architecture path and software stack, not full-checkpoint convergence, speed, GPU kernels or Bazzite feasibility. The compatibility manifest and exact installed package list are retained in results.
+
+On Bazzite, `bash scripts/bootstrap.sh` writes results/local-hardware.json. It records CPU, RAM, disk, GPU utility output, torch accelerators when installed, and Ollama list without deleting anything. Review that file before selecting GPU training packages. Bazzite's immutable system is not modified: the baseline installer uses a project venv. Use a supported container or distrobox for driver-specific training if needed. Do not install an NVIDIA CUDA torch build and assume it enables an AMD card. ROCm must match the actual supported GPU/driver stack.
+
+Approximate lower-bound weight storage: 1.73B × 2 bytes ≈ 3.46 GB BF16; FP32 ≈ 6.92 GB. Additional activation, gradient, optimizer, adapter and framework memory is needed. A small quantized inference model fitting in roughly 1 GB says little about trainability. A conservative working estimate is 8–16 GB VRAM for short-context BF16 LoRA, subject to measurement. Larger contexts raise activation costs. Reserve tens of GB of writable disk for caches, merged weights and conversion intermediates. No measured full-model minimum is claimed.
+
+If the local full-checkpoint one-step test fails or is too slow, use a suitable external GPU with the pinned revision and training manifest, and return the resulting adapter/merged artifact for local evaluation. Apple MPS and iPhone/iPad training are untested; those devices remain future inference clients.

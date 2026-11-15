@@ -1,0 +1,12 @@
+{
+  "example_id": "v2-extra-029",
+  "tokens": 1178,
+  "full_forward_backward_optimizer_step": true,
+  "peak_allocated_bytes": 5439182336,
+  "peak_reserved_bytes": 6043992064,
+  "gradient_norm": 6.914290904998779,
+  "probe_parameter_changed": true,
+  "fresh_adapter_parameters_restored": true,
+  "minimum_reserved_headroom_bytes": 536870912,
+  "passed": true
+}

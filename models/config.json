@@ -1,0 +1,1 @@
+{"base_model":"lfm3-official:1.7b","host":"http://127.0.0.1:11434","seeds":[11,22,33],"temperature":0.35,"num_ctx":8192,"num_predict":768,"think":false,"candidate_name":"aquinas-prompt:0.1.0","promotion":"none; all candidates require held-out human review"}

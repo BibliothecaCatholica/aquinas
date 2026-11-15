@@ -1,0 +1,34 @@
+[
+  {
+    "id": "pg17611",
+    "work": "Summa Theologiae",
+    "part": "I",
+    "author": "Thomas Aquinas",
+    "translator": "Fathers of the English Dominican Province",
+    "edition": "Benziger Brothers electronic transcription, From the Complete American Edition; see raw editorial notice",
+    "url": "https://www.gutenberg.org/cache/epub/17611/pg17611.txt",
+    "catalog_url": "https://www.gutenberg.org/ebooks/17611",
+    "rights": "Project Gutenberg catalog: public domain in USA; full embedded notice retained. No worldwide rights determination.",
+    "retrieved": "2026-11-14",
+    "path": "data/raw/summa-I.txt",
+    "sha256": "c9443221a31768991db4bbe37e6ed035b278143a6728af64dc8ba0cf8e79154d",
+    "expected_articles": 584,
+    "editorial_policy": "Raw bytes unchanged; offsets use decoded Unicode characters; original transcription corrections retained and disclosed."
+  },
+  {
+    "id": "pg17897",
+    "work": "Summa Theologiae",
+    "part": "I-II",
+    "author": "Thomas Aquinas",
+    "translator": "Fathers of the English Dominican Province",
+    "edition": "Benziger Brothers electronic transcription, From the Complete American Edition; see raw editorial notice",
+    "url": "https://www.gutenberg.org/cache/epub/17897/pg17897.txt",
+    "catalog_url": "https://www.gutenberg.org/ebooks/17897",
+    "rights": "Project Gutenberg catalog: public domain in USA; full embedded notice retained. No worldwide rights determination.",
+    "retrieved": "2026-11-14",
+    "path": "data/raw/summa-I-II.txt",
+    "sha256": "9722b299e1a91c43f989a282ebd857c92fdde442611035cba002f94b817c2be0",
+    "expected_articles": 619,
+    "editorial_policy": "Raw bytes unchanged; offsets use decoded Unicode characters; original transcription corrections retained and disclosed."
+  }
+]

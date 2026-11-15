@@ -1,0 +1,6 @@
+# Official LFM3 SFT notebook versions for the packages used by our own PyTorch loop.
+# Install a hardware-matching torch==2.14.1 separately (CPU/CUDA/ROCm/MPS).
+transformers==5.20.2
+peft==0.21.2
+accelerate==1.15.0
+safetensors==0.8.0

@@ -1,0 +1,217 @@
+{
+  "records": 40,
+  "original_training_articles": 20,
+  "source_refs_disjoint_from_philosophical_keys": true,
+  "exact_source_substrings_verified": true,
+  "source_context_in_actual_messages": true,
+  "source_texts_not_rewritten": true,
+  "original_train_sha256": "44d7ccc9c783468aa242583d2e9c5fce9e5627880cfa6566909a6ed86bd41813",
+  "v2_sha256": "de4b464c36107a8ae428338f3d1e143048cae66491b788a02f3ea50a09a6e7ba",
+  "training_executed": false,
+  "independent_scholarly_approval": false,
+  "warning": "This is a staged dataset-format repair, not 40 independent articles or a validated model. Several method examples deliberately reuse the same training articles. No old benchmark answers are used as targets.",
+  "tokenizer_prefix_alignment_verified": true,
+  "max_tokens": 1178,
+  "sequence_lengths": [
+    {
+      "id": "v2-train-001",
+      "tokens": 854,
+      "assistant_tokens": 55
+    },
+    {
+      "id": "v2-train-002",
+      "tokens": 849,
+      "assistant_tokens": 55
+    },
+    {
+      "id": "v2-train-003",
+      "tokens": 849,
+      "assistant_tokens": 58
+    },
+    {
+      "id": "v2-train-004",
+      "tokens": 743,
+      "assistant_tokens": 37
+    },
+    {
+      "id": "v2-train-005",
+      "tokens": 1114,
+      "assistant_tokens": 55
+    },
+    {
+      "id": "v2-train-006",
+      "tokens": 687,
+      "assistant_tokens": 41
+    },
+    {
+      "id": "v2-train-007",
+      "tokens": 621,
+      "assistant_tokens": 81
+    },
+    {
+      "id": "v2-train-008",
+      "tokens": 536,
+      "assistant_tokens": 39
+    },
+    {
+      "id": "v2-train-009",
+      "tokens": 422,
+      "assistant_tokens": 43
+    },
+    {
+      "id": "v2-train-010",
+      "tokens": 426,
+      "assistant_tokens": 40
+    },
+    {
+      "id": "v2-train-011",
+      "tokens": 701,
+      "assistant_tokens": 42
+    },
+    {
+      "id": "v2-train-012",
+      "tokens": 516,
+      "assistant_tokens": 33
+    },
+    {
+      "id": "v2-train-013",
+      "tokens": 470,
+      "assistant_tokens": 48
+    },
+    {
+      "id": "v2-train-014",
+      "tokens": 718,
+      "assistant_tokens": 37
+    },
+    {
+      "id": "v2-train-015",
+      "tokens": 1160,
+      "assistant_tokens": 50
+    },
+    {
+      "id": "v2-train-016",
+      "tokens": 819,
+      "assistant_tokens": 71
+    },
+    {
+      "id": "v2-train-017",
+      "tokens": 573,
+      "assistant_tokens": 40
+    },
+    {
+      "id": "v2-train-018",
+      "tokens": 835,
+      "assistant_tokens": 40
+    },
+    {
+      "id": "v2-train-019",
+      "tokens": 766,
+      "assistant_tokens": 41
+    },
+    {
+      "id": "v2-train-020",
+      "tokens": 564,
+      "assistant_tokens": 42
+    },
+    {
+      "id": "v2-train-021",
+      "tokens": 244,
+      "assistant_tokens": 34
+    },
+    {
+      "id": "v2-train-022",
+      "tokens": 230,
+      "assistant_tokens": 23
+    },
+    {
+      "id": "v2-train-023",
+      "tokens": 236,
+      "assistant_tokens": 25
+    },
+    {
+      "id": "v2-train-024",
+      "tokens": 241,
+      "assistant_tokens": 23
+    },
+    {
+      "id": "v2-train-025",
+      "tokens": 236,
+      "assistant_tokens": 27
+    },
+    {
+      "id": "v2-train-026",
+      "tokens": 211,
+      "assistant_tokens": 10
+    },
+    {
+      "id": "v2-train-027",
+      "tokens": 209,
+      "assistant_tokens": 5
+    },
+    {
+      "id": "v2-train-028",
+      "tokens": 228,
+      "assistant_tokens": 19
+    },
+    {
+      "id": "v2-extra-029",
+      "tokens": 1178,
+      "assistant_tokens": 65
+    },
+    {
+      "id": "v2-extra-030",
+      "tokens": 1170,
+      "assistant_tokens": 58
+    },
+    {
+      "id": "v2-extra-031",
+      "tokens": 803,
+      "assistant_tokens": 51
+    },
+    {
+      "id": "v2-extra-032",
+      "tokens": 588,
+      "assistant_tokens": 47
+    },
+    {
+      "id": "v2-extra-033",
+      "tokens": 817,
+      "assistant_tokens": 20
+    },
+    {
+      "id": "v2-extra-034",
+      "tokens": 663,
+      "assistant_tokens": 18
+    },
+    {
+      "id": "v2-extra-035",
+      "tokens": 702,
+      "assistant_tokens": 26
+    },
+    {
+      "id": "v2-extra-036",
+      "tokens": 754,
+      "assistant_tokens": 30
+    },
+    {
+      "id": "v2-extra-037",
+      "tokens": 240,
+      "assistant_tokens": 30
+    },
+    {
+      "id": "v2-extra-038",
+      "tokens": 227,
+      "assistant_tokens": 20
+    },
+    {
+      "id": "v2-extra-039",
+      "tokens": 240,
+      "assistant_tokens": 25
+    },
+    {
+      "id": "v2-extra-040",
+      "tokens": 245,
+      "assistant_tokens": 28
+    }
+  ]
+}
