@@ -4,7 +4,7 @@ A local Thomistic study and research tool from Bibliotheca Catholica: searchable
 **Aquinas Neuron**, an experimental LFM3-1.7B model with a Bibliotheca Catholica adapter merged in, for local use with
 Ollama.
 
-> **Experimental alpha (v0.2.0-alpha.2).** Answer quality has not been reviewed. Aquinas is not a teaching authority
+> **Experimental alpha (v0.2.0-alpha.3).** Answer quality has not been reviewed. Aquinas is not a teaching authority
 > and not a demonstrated improvement over the base model; answers can contain mistakes and unsupported citations, so
 > check the primary text. **The model alone has no access to the Summa.** It answers from its weights unless you use
 > it through the Aquinas tool below, which retrieves the relevant articles and sends them with your question.
@@ -15,7 +15,7 @@ You need [Ollama](https://ollama.com/download) installed and running. Then, on L
 terminal. It installs the model and the Summa tool together:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/BibliothecaCatholica/aquinas/main/scripts/install_ollama.sh | bash -s -- --with-tool
+curl -fsSL https://raw.githubusercontent.com/BibliothecaCatholica/aquinas/v0.2.0-alpha.3/scripts/install_ollama.sh | bash -s -- --with-tool
 ```
 
 **What this downloads.** One file, the Aquinas Neuron: LiquidAI's **LFM3-1.7B** (revision `1da06bec…`) with the
@@ -24,7 +24,7 @@ adapter to a model at run time, so the two are combined before release (`scripts
 file, which the installer checks against a pinned SHA-256 before using it. In order, the installer:
 
 1. downloads the combined file (Q4_K_M, about 1.1 GB; add `--q8` for the 1.85 GB Q8_0) and its Modelfile from the
-   [v0.2.0-alpha.2 release](https://github.com/BibliothecaCatholica/aquinas/releases/tag/v0.2.0-alpha.2), and stops if
+   [v0.2.0-alpha.3 release](https://github.com/BibliothecaCatholica/aquinas/releases/tag/v0.2.0-alpha.3), and stops if
    either checksum differs;
 2. adds it to Ollama as `aquinas-neuron` (one new model; nothing else changes; an existing `aquinas-neuron` is replaced
    only with `--force`);

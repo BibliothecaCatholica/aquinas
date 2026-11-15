@@ -1,4 +1,12 @@
-# Aquinas Neuron (experimental), v0.2.0-alpha.2
+# Aquinas Neuron (experimental), v0.2.0-alpha.3
+
+## What changed since v0.2.0-alpha.2
+
+- The model files are the same: both GGUF files are re-attached from v0.2.0-alpha.2 with unchanged checksums.
+- Retrieval fixes in the tool: article titles are indexed and weighted, common question words are ignored, and results
+  are ranked by article (`results/retrieval/`).
+- The one-line install command now fetches `install_ollama.sh` from this release tag instead of `main`, so the script,
+  the model files, and the tool it clones (`--with-tool`) always come from the same release.
 
 **Experimental alpha. Answer quality has not been reviewed. Not a teaching authority and not a demonstrated improvement
 over the base model. Check the primary text.** The model alone has no access to the Summa; use it through the Aquinas
@@ -22,7 +30,7 @@ the embedded chat template, so `ollama run aquinas-neuron` answers directly.
 ## Install
 
 ```bash
-bash scripts/install_ollama.sh     # from a clone of the repository; --q8 for the Q8_0 file
+curl -fsSL https://raw.githubusercontent.com/BibliothecaCatholica/aquinas/v0.2.0-alpha.3/scripts/install_ollama.sh | bash
 ollama run aquinas-neuron
 python -m aquinas.cli ask 'When does an unjust law bind in conscience?' --model aquinas-neuron --mode rag
 ```
@@ -38,6 +46,7 @@ Manual steps for Windows and macOS are in the README.
   is keyed to. No answer has been scored.
 - Not run: GPU inference, a sealed or fresh evaluation, independent scholarly review.
 
-The files were built from the repository's `scripts/build_gguf.sh` by the release workflow, which refuses to publish
-unless the checksums match the ones above. The Q8_0 file is bit-identical to the one tested in development; Q4_K_M
+The GGUF files were built for v0.2.0-alpha.2 from the repository's `scripts/build_gguf.sh` by the release workflow,
+which refused to publish unless the checksums matched the ones above; the v0.2.0-alpha.3 workflow downloads them from
+that release and again refuses to publish unless they match. The Q8_0 file is bit-identical to the one tested in development; Q4_K_M
 quantization differs slightly between CPU types, so the Q4_K_M file was tested again after publication. Licence: LFM Open License v1.0; see `NOTICE`.

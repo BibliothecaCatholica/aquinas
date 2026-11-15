@@ -1,0 +1,49 @@
+name: Publish Aquinas release (same model files)
+# Creates the v0.2.0-alpha.3 prerelease. The GGUF files are not rebuilt: they are downloaded from v0.2.0-alpha.2 and
+# the release is refused unless their SHA-256 match models/aquinas-neuron/SHA256SUMS. The Modelfile, NOTICE, and
+# licence come from this commit, which is also the commit the tag points to, so the tagged install_ollama.sh matches.
+# Runs once when this file lands on main, or by hand; it never replaces an existing release.
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/publish-release.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: aquinas-neuron-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TAG: v0.2.0-alpha.3
+      FROM: v0.2.0-alpha.2
+    steps:
+      - uses: actions/checkout@v4
+      - name: Refuse to replace an existing release
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then echo "Release $TAG already exists; nothing to do."; exit 1; fi
+      - name: The tagged install script must point to this release
+        run: |
+          grep -qx "VERSION=\"$TAG\".*" scripts/install_ollama.sh
+          grep -q "aquinas/$TAG/scripts/install_ollama.sh" README.md
+      - name: Download the model files from the previous release
+        run: |
+          A="$RUNNER_TEMP/assets"; mkdir -p "$A"
+          gh release download "$FROM" --dir "$A" --pattern 'aquinas-neuron-*.gguf'
+          ls -l "$A"
+      - name: Verify the pinned checksums
+        run: |
+          cd "$RUNNER_TEMP/assets" && sha256sum -c "$GITHUB_WORKSPACE/models/aquinas-neuron/SHA256SUMS"
+      - name: Assemble and publish
+        run: |
+          A="$RUNNER_TEMP/assets"
+          cp models/aquinas-neuron/Modelfile models/aquinas-neuron/NOTICE "$A/"
+          cp models/source-pilot-v21/LICENSE "$A/LICENSE-LFM-Open-License-v1.0.txt"
+          (cd "$A" && sha256sum aquinas-neuron-Q4_K_M.gguf aquinas-neuron-Q8_0.gguf Modelfile NOTICE LICENSE-LFM-Open-License-v1.0.txt > SHA256SUMS && cat SHA256SUMS)
+          gh release create "$TAG" --prerelease --target "$GITHUB_SHA" --title "Aquinas Neuron (experimental)" \
+            --notes-file docs/RELEASE-NEURON.md "$A"/*
